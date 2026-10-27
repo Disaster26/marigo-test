@@ -752,3 +752,5 @@ body.mg-zwykla .entry-content .wp-block-columns:not([class*="mg-"])>.wp-block-co
 .page-hero{overflow:hidden}
 /* stare tabele z edytora klasycznego ze sztywna szerokoscia w px */
 .entry-content table[style*="width"]{width:auto!important;max-width:100%!important;height:auto!important;display:block;overflow-x:auto}
+/* telefon: naglowek podstron bez zdjecia w tle (pod granatowym przyciemnieniem bylo prawie niewidoczne, a wazylo ok. 160 KB) */
+@media (max-width:760px){.page-hero{background-image:none!important;background-color:var(--mg-navy)!important}.page-hero:before{background:linear-gradient(100deg,var(--mg-navy-3) 0%,var(--mg-navy) 100%)}}
