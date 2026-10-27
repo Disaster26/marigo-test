@@ -102,6 +102,7 @@ h1,h2,h3,h4{color:var(--mg-ink);font-weight:700;letter-spacing:-.01em}
 /* tabele w tresci (cennik, porownania) nie rozpychaja strony na telefonie */
 .entry-content .wp-block-table{overflow-x:auto;max-width:100%}
 .entry-content .wp-block-table table{min-width:0}
+.entry-content .wp-block-column,.entry-content .gb-container,.entry-content .gb-grid-column{min-width:0}
 .entry-content figure,.entry-content iframe,.entry-content img{max-width:100%}
 
 /* ==========================================================================
