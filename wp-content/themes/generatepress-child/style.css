@@ -2,9 +2,9 @@
 Theme Name:   generatepress - child
 Author:       iREBU Interactive Agency
 Author URI:   https://irebu.com
-Version:      2.0.0
+Version:      3.0.0
 Template:     generatepress
-Description:  Odswiezenie Marigo 2026: strona glowna, szablon podstrony jachtu, nowa oprawa wszystkich podstron i wpisow, naglowek, menu na telefonie i stopka. Bez zewnetrznych czcionek.
+Description:  Odswiezenie Marigo 2026: strona glowna, szablon podstrony jachtu, nowa oprawa wszystkich podstron i wpisow, naglowek, menu na telefonie i stopka. Czcionka Source Sans 3 z plikow motywu (fonts/, licencja SIL OFL), bez Google Fonts.
 */
 
 /* ==========================================================================
@@ -14,8 +14,8 @@ Description:  Odswiezenie Marigo 2026: strona glowna, szablon podstrony jachtu, 
   --mg-navy:#0f2a44;
   --mg-navy-2:#16395a;
   --mg-navy-3:#0b2035;
-  --mg-ink:#16212c;
-  --mg-txt:#33404d;
+  --mg-ink:#14212f;
+  --mg-txt:#2f3d4c;
   --mg-mut:#5d6b78;
   --mg-sand:#f4f0e8;
   --mg-line:#dcd4c6;
@@ -25,23 +25,31 @@ Description:  Odswiezenie Marigo 2026: strona glowna, szablon podstrony jachtu, 
   --mg-blue:#1b5fa8;
   --mg-wrap:1200px;
   --mg-r:10px;
-  --mg-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mg-font:"Source Sans 3","Source Sans 3 zast",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  --mg-tekst:38rem;
 }
+/* Source Sans 3 (SIL Open Font License): os grubosci 400-700, uzywane tylko 400 i 600.
+   Dwa pliki: lacinka + polskie litery (ladowane razem, preload w functions.php). */
+@font-face{font-family:"Source Sans 3";font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/source-sans-3-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Source Sans 3";font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/source-sans-3-pl.woff2) format("woff2");unicode-range:U+0104-0107,U+0118-0119,U+0141-0144,U+015A-015B,U+0179-017C}
+/* zastepcza czcionka o zblizonej szerokosci - tekst nie przeskakuje, gdy laduje sie wlasciwa */
+@font-face{font-family:"Source Sans 3 zast";src:local("Arial");size-adjust:90%;ascent-override:104%;descent-override:29%;line-gap-override:0%}
 
 /* ==========================================================================
    2. Typografia calej strony (czcionka systemowa zamiast Google Fonts)
    ========================================================================== */
 body,button,input,select,textarea,
 h1,h2,h3,h4,h5,h6,.main-navigation a,.menu-toggle{font-family:var(--mg-font)}
-body{color:var(--mg-txt);-webkit-text-size-adjust:100%}
-h1,h2,h3,h4{color:var(--mg-ink);font-weight:700;letter-spacing:-.01em}
+body{color:var(--mg-txt);-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+h1,h2,h3,h4,h5,h6{color:var(--mg-ink);font-weight:600;letter-spacing:-.005em}
+strong,b{font-weight:600}
 
 /* ==========================================================================
    3. Naglowek GeneratePress
    ========================================================================== */
 .site-header .inside-header{padding:10px 20px}
 .site-header .header-image{width:170px}
-.main-navigation .main-nav ul li a,.main-navigation .menu-bar-items{font-size:16px;font-weight:650}
+.main-navigation .main-nav ul li a,.main-navigation .menu-bar-items{font-size:16px;font-weight:600}
 .main-navigation .main-nav>ul>li>a{padding-left:12px;padding-right:12px}
 .main-navigation .main-nav ul li a,.main-navigation .menu-toggle,.main-navigation .menu-bar-items{color:var(--mg-navy)}
 .main-navigation .main-nav ul li:not([class*="current-menu-"]):hover>a{color:var(--mg-red)}
@@ -71,9 +79,10 @@ h1,h2,h3,h4{color:var(--mg-ink);font-weight:700;letter-spacing:-.01em}
 .mg-sek.mg-sand{background:var(--mg-sand)}
 .entry-content>.mg-sek,.entry-content>.mg-hero{margin-top:0;margin-bottom:0}
 .mg-sek>*:last-child{margin-bottom:0}
-.mg-sek h2{font-size:clamp(1.5rem,1.1rem + 1.5vw,2.15rem);line-height:1.2;margin:0 0 .5em}
+.mg-sek h2{font-size:clamp(1.45rem,1.15rem + 1.2vw,2rem);line-height:1.2;margin:0 0 .5em}
 .mg-sek h3{font-size:1.12rem;line-height:1.3;margin:0 0 .4em}
 .mg-sek p,.mg-sek li{font-size:1rem;line-height:1.6}
+.mg-sek p{margin:0 0 .9em}
 .mg-sek-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:8px 24px;margin-bottom:22px}
 .mg-sek-head>*{margin:0!important}
 .mg-sek-head p{color:var(--mg-mut);max-width:560px}
@@ -81,7 +90,7 @@ h1,h2,h3,h4{color:var(--mg-ink);font-weight:700;letter-spacing:-.01em}
 .mg-sek a{color:var(--mg-blue)}
 
 /* przyciski (core/buttons z klasa) */
-.entry-content .mg-btn .wp-block-button__link,a.mg-btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 24px;border-radius:8px;font-weight:700;font-size:1rem;line-height:1.2;text-decoration:none;background:var(--mg-red)!important;color:#fff!important;border:0;transition:background-color .18s ease}
+.entry-content .mg-btn .wp-block-button__link,a.mg-btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 24px;border-radius:8px;font-weight:600;font-size:1rem;line-height:1.2;text-decoration:none;background:var(--mg-red)!important;color:#fff!important;border:0;transition:background-color .18s ease}
 .entry-content .mg-btn .wp-block-button__link:hover,a.mg-btn:hover{background:var(--mg-red-d)!important}
 .entry-content .mg-btn-linia .wp-block-button__link{background:transparent!important;color:var(--mg-ink)!important;border:2px solid currentColor}
 .entry-content .mg-btn-linia .wp-block-button__link:hover{background:rgba(0,0,0,.04)!important}
@@ -125,7 +134,7 @@ body.mg-glowna .entry-content{margin:0}
 .mg-hero .wp-block-buttons{margin:clamp(8px,1.6svh,14px) 0 0}
 .mg-hero .mg-btn,.mg-hero .mg-btn .wp-block-button__link{width:100%}
 .mg-ocena{display:flex;flex-wrap:wrap;gap:2px 14px;font-size:.88rem!important;color:#cfdbe6;margin:clamp(8px,1.4svh,12px) 0 0!important}
-.mg-ocena a{color:#fff!important;font-weight:700;text-decoration:none}
+.mg-ocena a{color:#fff!important;font-weight:600;text-decoration:none}
 .mg-gw{color:#f2b33d;letter-spacing:1px}
 .mg-widget-szukaj:empty{display:none}
 .mg-widget-szukaj{background:#fff;color:var(--mg-ink);border-radius:var(--mg-r);padding:12px;margin-top:14px;box-shadow:0 10px 30px rgba(0,0,0,.18)}
@@ -157,13 +166,27 @@ body.mg-glowna .entry-content{margin:0}
 @media (min-width:600px){.mg-typy{grid-template-columns:repeat(2,minmax(0,1fr))}.mg-typ{aspect-ratio:4/3}}
 @media (min-width:1025px){.mg-typy{grid-template-columns:repeat(4,minmax(0,1fr))}}
 
+/* przyciski typow jachtow nad flota */
+.mg-typy-link.wp-block-buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:0 0 26px!important}
+.entry-content .mg-typy-link .mg-btn .wp-block-button__link{width:100%;min-height:44px;padding:9px 14px;font-size:.98rem;font-weight:600;background:#fff!important;color:var(--mg-ink)!important;border:1px solid var(--mg-line)}
+.entry-content .mg-typy-link .mg-btn .wp-block-button__link:hover{border-color:var(--mg-ink);background:#fff!important}
+.mg-typy-link .wp-block-button{margin:0;width:auto}
+@media (min-width:700px){.mg-typy-link.wp-block-buttons{display:flex;flex-wrap:wrap}.entry-content .mg-typy-link .mg-btn .wp-block-button__link{width:auto}}
+
 /* flota: karty jachtow */
 .mg-flota{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;margin:0 0 26px}
+/* telefon: karty w poziomym pasku przewijanym palcem (kolejna karta wystaje z prawej) */
+@media (max-width:899px){
+  .mg-flota{display:flex;gap:12px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:4px 2px 14px;margin:0 0 18px;scrollbar-width:thin;scrollbar-color:var(--mg-line) transparent}
+  .mg-flota .mg-jacht{flex:0 0 min(78%,300px);scroll-snap-align:start}
+  .mg-flota::-webkit-scrollbar{height:4px}
+  .mg-flota::-webkit-scrollbar-thumb{background:var(--mg-line);border-radius:4px}
+}
 .mg-jacht{position:relative;background:#fff;border:1px solid var(--mg-line);border-radius:var(--mg-r);overflow:hidden;display:flex;flex-direction:column;min-width:0;margin:0!important;transition:transform .22s ease,box-shadow .22s ease}
 .mg-jacht>*{margin-left:16px;margin-right:16px}
 .mg-jacht .mg-fot{margin:0 0 12px;aspect-ratio:3/2;overflow:hidden;background:#dfe6ec}
 .mg-jacht .mg-fot img{width:100%;height:100%;object-fit:cover}
-.mg-jacht h3{margin:0 16px 2px;font-size:1.15rem}
+.mg-jacht h3{margin:0 16px 2px;font-size:1.15rem;line-height:1.25}
 .mg-jacht h3 a{color:var(--mg-ink)!important;text-decoration:none}
 .mg-jacht h3 a:after{content:"";position:absolute;inset:0;z-index:1}
 .mg-jacht .mg-typ-j{color:var(--mg-mut);font-size:.9rem!important;margin:0 16px 10px}
@@ -172,14 +195,18 @@ body.mg-glowna .entry-content{margin:0}
 .mg-par li:before{content:"";position:absolute;left:0;top:.5em;width:6px;height:6px;border-radius:50%;background:var(--mg-navy-2)}
 .mg-jacht .mg-dol{margin:auto 16px 0!important;padding:12px 0 14px;border-top:1px solid var(--mg-line-2);display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:.92rem!important;color:var(--mg-ink)}
 .mg-dol strong{font-size:1.2rem}
-.mg-dol .mg-wiecej{font-weight:700;color:var(--mg-blue);white-space:nowrap}
+.mg-dol .mg-wiecej{font-weight:600;color:var(--mg-blue);white-space:nowrap}
 @media (hover:hover){.mg-jacht:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(15,42,68,.12)}}
-@media (min-width:600px){.mg-flota{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (min-width:900px){.mg-flota{grid-template-columns:repeat(3,minmax(0,1fr))}}
-.mg-flota-tyt{font-size:1.25rem!important;margin:6px 0 14px!important}
+.mg-flota-tyt{font-size:1.2rem!important;margin:4px 0 12px!important}
 
 /* opinie: cytaty bez ramek */
 .mg-opinie{display:grid;grid-template-columns:minmax(0,1fr);gap:8px 40px}
+@media (max-width:759px){
+  .mg-opinie{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;padding:0 2px 10px;scrollbar-width:none}
+  .mg-opinie::-webkit-scrollbar{display:none}
+  .mg-opinie .wp-block-quote{flex:0 0 min(84%,320px);scroll-snap-align:start;background:#fff;border:1px solid var(--mg-line)!important;border-radius:var(--mg-r);padding:16px 18px!important;display:flex;flex-direction:column;justify-content:space-between}
+}
 .mg-opinie .wp-block-quote{margin:0;padding:14px 0 14px 18px;border-left:3px solid var(--mg-line)}
 .mg-opinie .wp-block-quote p{color:var(--mg-ink);font-size:1.02rem}
 .mg-opinie cite{font-size:.86rem;color:var(--mg-mut);font-style:normal}
@@ -194,17 +221,44 @@ body.mg-glowna .entry-content{margin:0}
 /* FAQ na core/details */
 .mg-faq{border-top:1px solid var(--mg-line);max-width:880px}
 .mg-faq .wp-block-details{border-bottom:1px solid var(--mg-line);margin:0!important;padding:0}
-.mg-faq summary{cursor:pointer;list-style:none;padding:16px 36px 16px 0;font-weight:700;color:var(--mg-ink);position:relative;line-height:1.4}
+.mg-faq summary{cursor:pointer;list-style:none;padding:16px 36px 16px 0;font-weight:600;color:var(--mg-ink);position:relative;line-height:1.4}
 .mg-faq summary::-webkit-details-marker{display:none}
 .mg-faq summary:after{content:"";position:absolute;right:6px;top:22px;width:10px;height:10px;border-right:2px solid var(--mg-navy);border-bottom:2px solid var(--mg-navy);transform:rotate(45deg);transition:transform .2s}
 .mg-faq details[open] summary:after{transform:rotate(-135deg);top:26px}
 .mg-faq details>p{margin:0 0 16px;max-width:780px}
+.mg-faq summary{font-weight:600}
+/* "Pokaz wszystkie pytania" */
+.mg-faq .mg-faq-wiecej{border-bottom:0!important}
+.mg-faq .mg-faq-wiecej>summary{display:inline-flex;align-items:center;gap:10px;margin:18px 0 4px;padding:10px 18px;border:1px solid var(--mg-ink);border-radius:8px;color:var(--mg-ink);line-height:1.2}
+.mg-faq .mg-faq-wiecej>summary:after{position:static;width:8px;height:8px;margin-top:-4px}
+.mg-faq .mg-faq-wiecej[open]>summary{display:none}
+.mg-faq .mg-faq-wiecej[open]{border-top:0}
+
+/* "Wiecej o czarterze jachtow na Mazurach": cala tresc poradnikowa zwinieta, w kodzie strony */
+.mg-wiecej-sek.mg-sek{padding-top:clamp(28px,4vw,44px);padding-bottom:clamp(28px,4vw,44px)}
+.mg-wiecej-blok{margin:0}
+.mg-wiecej-blok>*{max-width:46rem}
+.mg-wiecej-blok>summary{list-style:none;cursor:pointer;position:relative;padding:6px 44px 6px 0;font-size:clamp(1.25rem,1.1rem + .6vw,1.5rem);font-weight:600;line-height:1.3;color:var(--mg-ink)}
+.mg-wiecej-blok>summary::-webkit-details-marker{display:none}
+.mg-wiecej-blok>summary:after{content:"";position:absolute;right:8px;top:50%;width:11px;height:11px;margin-top:-9px;border-right:2px solid var(--mg-ink);border-bottom:2px solid var(--mg-ink);transform:rotate(45deg);transition:transform .2s}
+.mg-wiecej-blok[open]>summary:after{transform:rotate(-135deg);margin-top:-3px}
+.mg-wiecej-blok>summary+*{margin-top:20px}
+.mg-wiecej-blok h2{font-size:1.3rem!important;margin:1.8em 0 .5em!important}
+.mg-wiecej-blok h3{font-size:1.12rem!important;margin:1.4em 0 .4em!important}
+.mg-wiecej-blok h2 strong,.mg-wiecej-blok h3 strong{font-weight:inherit}
+.mg-wiecej-blok p,.mg-wiecej-blok li{max-width:44rem}
+
+/* o nas + ceny */
+#o-nas .mg-foto{margin:0 0 20px}
+@media (max-width:760px){#o-nas .mg-foto{display:none}}
+.mg-kontakt-dane{font-size:1.05rem!important;line-height:1.7!important}
+.mg-kontakt-dane a{font-weight:600;text-decoration:none}
 
 /* kontakt z formularzem CF7 */
 .mg-kontakt .wpcf7 input[type=text],.mg-kontakt .wpcf7 input[type=email],.mg-kontakt .wpcf7 input[type=tel],.mg-kontakt .wpcf7 textarea,
 .mg-rez .wpcf7 input[type=text],.mg-rez .wpcf7 input[type=email],.mg-rez .wpcf7 input[type=tel],.mg-rez .wpcf7 textarea{width:100%;border:1px solid var(--mg-line);border-radius:8px;background:#fff;padding:10px 12px;font-size:1rem}
 .mg-kontakt .wpcf7 textarea,.mg-rez .wpcf7 textarea{height:120px}
-.mg-kontakt .wpcf7-submit,.mg-rez .wpcf7-submit{background:var(--mg-red)!important;color:#fff!important;border-radius:8px;min-height:48px;padding:12px 26px;font-weight:700}
+.mg-kontakt .wpcf7-submit,.mg-rez .wpcf7-submit{background:var(--mg-red)!important;color:#fff!important;border-radius:8px;min-height:48px;padding:12px 26px;font-weight:600}
 .mg-kontakt .wpcf7-submit:hover,.mg-rez .wpcf7-submit:hover{background:var(--mg-red-d)!important}
 .mg-dane{list-style:none;margin:0;padding:0}
 .mg-dane li{padding:6px 0;font-size:1.02rem!important}
@@ -236,7 +290,7 @@ body.mg-jacht-strona .entry-content>.mg-jhero{margin-top:12px}
   .mg-galeria.wp-block-gallery>figure.wp-block-image:first-child{grid-column:1/-1}
   .mg-galeria.wp-block-gallery>figure.wp-block-image:nth-child(n+6){display:none}
   .mg-galeria.wp-block-gallery>figure.wp-block-image:nth-child(5){position:relative}
-  .mg-galeria.wp-block-gallery>figure.wp-block-image:nth-child(5):after{content:"Więcej zdjęć";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(11,32,53,.55);color:#fff;font-weight:700;pointer-events:none}
+  .mg-galeria.wp-block-gallery>figure.wp-block-image:nth-child(5):after{content:"Więcej zdjęć";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(11,32,53,.55);color:#fff;font-weight:600;pointer-events:none}
   .mg-galeria.wp-block-gallery>figure.wp-block-image:nth-child(5):last-child:after{display:none}
 }
 .mg-jpanel>*{margin-top:0}
@@ -292,7 +346,7 @@ body.mg-jacht-strona .entry-content>.mg-jhero{margin-top:12px}
    ========================================================================== */
 .mg-mob{position:fixed;left:0;right:0;bottom:0;z-index:90;display:flex;gap:8px;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--mg-line);transform:translateY(110%);transition:transform .25s ease;box-shadow:0 -6px 16px rgba(15,42,68,.08)}
 .mg-mob.widac{transform:none}
-.mg-mob a{flex:1;display:flex;align-items:center;justify-content:center;min-height:46px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.95rem}
+.mg-mob a{flex:1;display:flex;align-items:center;justify-content:center;min-height:46px;border-radius:8px;font-weight:600;text-decoration:none;font-size:.95rem}
 .mg-mob .mg-mob-tel{border:2px solid var(--mg-ink);color:var(--mg-ink)}
 .mg-mob .mg-mob-cta{background:var(--mg-red);color:#fff}
 @media (min-width:761px){.mg-mob{display:none}}
@@ -312,13 +366,13 @@ body.mg-jacht-strona .entry-content>.mg-jhero{margin-top:12px}
 .mg-st-okruszki p{margin:0}
 .mg-st-okruszki a{color:#a9bccd}
 .mg-st-gora{display:grid;grid-template-columns:minmax(0,1fr);gap:32px;margin-bottom:36px}
-.mg-st-nazwa{display:inline-block;color:#fff!important;font-size:1.3rem;font-weight:800;letter-spacing:-.01em;margin-bottom:10px;text-decoration:none!important}
+.mg-st-nazwa{display:inline-block;color:#fff!important;font-size:1.3rem;font-weight:600;letter-spacing:-.01em;margin-bottom:10px;text-decoration:none!important}
 .mg-st-marka p{max-width:340px}
 .mg-st-social{display:flex;gap:10px;margin-top:14px}
 .mg-st-social a{width:40px;height:40px;border-radius:50%;border:1px solid #2a4663;display:flex;align-items:center;justify-content:center;color:#fff;transition:background-color .2s ease,border-color .2s ease}
 .mg-st-social a:hover{background:var(--mg-red);border-color:var(--mg-red)}
 .mg-st-social svg{width:18px;height:18px}
-.mg-st-h{color:#fff;font-weight:700;font-size:1rem;margin:0 0 12px!important}
+.mg-st-h{color:#fff;font-weight:600;font-size:1rem;margin:0 0 12px!important}
 .mg-st-poz{display:flex;align-items:center;gap:12px;padding:6px 0;color:#fff!important}
 .mg-st-poz svg{width:20px;height:20px;color:#7f9ab3;flex:0 0 auto}
 .mg-st-poz b{display:block;font-size:1.05rem;line-height:1.25}
@@ -326,7 +380,7 @@ body.mg-jacht-strona .entry-content>.mg-jhero{margin-top:12px}
 .mg-st-poz:hover{text-decoration:none!important}
 .mg-st-poz:hover svg{color:var(--mg-red)}
 .mg-st-godz{margin-top:12px!important;font-size:.9rem}
-.mg-st-mapa{display:inline-flex;align-items:center;gap:8px;margin-top:4px;padding:9px 14px;border:1px solid #2a4663;border-radius:8px;color:#fff!important;font-weight:700;font-size:.92rem}
+.mg-st-mapa{display:inline-flex;align-items:center;gap:8px;margin-top:4px;padding:9px 14px;border:1px solid #2a4663;border-radius:8px;color:#fff!important;font-weight:600;font-size:.92rem}
 .mg-st-mapa svg{width:18px;height:18px;color:var(--mg-red)}
 .mg-st-mapa:hover{background:#13304d;text-decoration:none!important}
 .mg-st-linki ul{list-style:none;margin:0 0 14px;padding:0;columns:2;column-gap:20px}
@@ -362,17 +416,17 @@ body.mg-jacht-strona .entry-content>.mg-jhero{margin-top:12px}
   body .site-header #site-navigation.toggled .main-nav ul li{border-bottom:1px solid var(--mg-line-2);background:transparent!important}
   body .site-header #site-navigation.toggled .main-nav ul li:last-child{border-bottom:0}
   body .site-header #site-navigation.toggled .main-nav ul li>a{background:transparent!important}
-  body .site-header #site-navigation.toggled .main-nav>ul>li>a{font-size:1.15rem;font-weight:700;line-height:1.3;padding:15px 20px;color:var(--mg-ink)}
+  body .site-header #site-navigation.toggled .main-nav>ul>li>a{font-size:1.15rem;font-weight:600;line-height:1.3;padding:15px 20px;color:var(--mg-ink)}
   body .site-header #site-navigation.toggled .main-nav ul ul{background:var(--mg-sand)!important;border-top:1px solid var(--mg-line-2)}
   body .site-header #site-navigation.toggled .main-nav ul ul li a{font-size:1rem;font-weight:600;line-height:1.3;padding:12px 20px 12px 34px;color:var(--mg-ink)}
-  body .site-header #site-navigation.toggled .main-nav ul ul ul li a{padding-left:48px;font-weight:500}
+  body .site-header #site-navigation.toggled .main-nav ul ul ul li a{padding-left:48px;font-weight:400}
   body .site-header #site-navigation.toggled .main-nav ul li[class*="current-menu-"]>a{color:var(--mg-red)}
   body .site-header #site-navigation.toggled .main-nav li.menu-item-has-children>a{display:flex;align-items:center;justify-content:space-between}
   body .site-header #site-navigation.toggled .dropdown-menu-toggle{padding:0 4px 0 22px;margin-left:auto;display:inline-flex;align-items:center;color:var(--mg-navy)}
 }
 /* panel Off Canvas z GP Premium (marigo.pl) */
 .slideout-navigation.main-navigation{background:#fff}
-.slideout-navigation.main-navigation .main-nav ul li a{color:var(--mg-ink);font-weight:700;line-height:1.3;padding-top:14px;padding-bottom:14px}
+.slideout-navigation.main-navigation .main-nav ul li a{color:var(--mg-ink);font-weight:600;line-height:1.3;padding-top:14px;padding-bottom:14px}
 .slideout-navigation.main-navigation .main-nav ul li{border-bottom:1px solid var(--mg-line-2)}
 .slideout-navigation.main-navigation .main-nav ul ul{background:var(--mg-sand)}
 .slideout-navigation.main-navigation .main-nav ul ul li a{font-weight:600;padding-left:34px}
@@ -384,14 +438,15 @@ body.mg-jacht-strona .entry-content>.mg-jhero{margin-top:12px}
 .page-hero{position:relative;isolation:isolate;padding:clamp(34px,6vw,84px) 16px!important;background-position:center 55%!important;background-size:cover!important}
 .page-hero:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,rgba(11,32,53,.9) 0%,rgba(11,32,53,.72) 50%,rgba(11,32,53,.45) 100%)}
 .page-hero .inside-page-hero,.page-hero .inside-page-hero.grid-container{max-width:var(--mg-wrap)!important;margin:0 auto;padding:0!important}
-.page-hero h1{color:#fff!important;font-size:clamp(1.55rem,1.1rem + 2.2vw,2.75rem)!important;line-height:1.15!important;font-weight:800!important;letter-spacing:-.015em;margin:0!important;max-width:24em}
+.page-hero h1{color:#fff!important;font-size:clamp(1.55rem,1.1rem + 2.2vw,2.75rem)!important;line-height:1.15!important;font-weight:600!important;letter-spacing:-.015em;margin:0!important;max-width:24em}
 body.mg-jacht-strona .page-hero:before{display:none}
 body.mg-jacht-strona .page-hero{background-image:none!important}
 
 /* ==========================================================================
    12. Zwykle strony i wpisy: jedna kolumna, odstepy, typografia jak w koncepcji
    ========================================================================== */
-body{font-size:17px;line-height:1.6;color:var(--mg-txt);background:#fff}
+body{font-size:17px;line-height:1.65;color:var(--mg-txt);background:#fff}
+@media (min-width:1025px){body{font-size:18px}}
 /* szerokie tabele i zdjecia nie rozpychaja kolumny tresci (GeneratePress ma .site-content jako flex) */
 .site-content .content-area,.site-content .site-main,.inside-article,.entry-content{min-width:0}
 body.mg-jacht-strona .site-content .content-area{width:100%}
@@ -399,42 +454,89 @@ a{color:var(--mg-blue)}
 a:hover,a:focus{color:var(--mg-red-d)}
 body:not(.mg-glowna):not(.mg-jacht-strona) .site-content{padding:0!important;display:block}
 body:not(.mg-glowna):not(.mg-jacht-strona) .content-area{width:100%!important;float:none}
-body:not(.mg-glowna):not(.mg-jacht-strona) .inside-article{max-width:calc(var(--mg-wrap) + 32px);margin:0 auto;padding:clamp(22px,4vw,48px) 16px clamp(44px,6vw,80px)!important;background:transparent}
+body:not(.mg-glowna):not(.mg-jacht-strona) .inside-article{max-width:calc(var(--mg-wrap) + 32px);margin:0 auto;padding:clamp(26px,4vw,52px) 16px clamp(48px,6vw,84px)!important;background:transparent}
+/* zwykle strony i wpisy: tekst w jednej kolumnie ok. 70 znakow, wysrodkowanej; tytul strony w tej samej linii */
+body.mg-zwykla .entry-content,body.mg-zwykla .inside-article>.entry-header,body.mg-zwykla .inside-article>.featured-image{max-width:var(--mg-tekst);margin-left:auto;margin-right:auto}
+body.mg-zwykla .page-hero .inside-page-hero{max-width:var(--mg-tekst)!important}
+/* karty jachtow na zwyklych stronach: szersze niz kolumna tekstu (bez ujemnych marginesow) */
+@media (min-width:900px){body.mg-zwykla .entry-content .mg-flota{width:min(var(--mg-wrap),100vw - 48px);position:relative;left:50%;transform:translateX(-50%)}}
 body.single .entry-header,body.page:not(.mg-glowna) .entry-header{margin-bottom:8px}
 body.single .entry-meta{font-size:.88rem;color:var(--mg-mut)}
 body.single .entry-meta a{color:var(--mg-mut)}
-.featured-image.page-header-image-single,.single .inside-article>.featured-image{margin:0 0 20px}
+.featured-image.page-header-image-single,.single .inside-article>.featured-image{margin:0 auto 24px}
 .featured-image.page-header-image-single img,.single .inside-article>.featured-image img{border-radius:var(--mg-r);width:100%;max-height:520px;object-fit:cover}
 
-/* typografia starych tresci (GenerateBlocks i bloki WordPressa) - bez justowania, rozstrzelen i wersalikow */
-.entry-content :is(p,li,dd,dt,blockquote,figcaption,td,th):not([class*="mg-"]):not(.entry-content [class*="mg-"] *){letter-spacing:normal!important;text-align:left!important}
-.entry-content :is(p,li,dd,dt,blockquote):not([class*="mg-"]):not(.entry-content [class*="mg-"] *){font-size:1rem!important;line-height:1.65!important;color:var(--mg-txt)}
-.entry-content :is(p,ul,ol,blockquote):not([class*="mg-"]):not(.entry-content [class*="mg-"] *){max-width:50rem}
-.entry-content :is(h2,h3,h4,h5,h6):not([class*="mg-"]):not(.entry-content [class*="mg-"] *){font-family:var(--mg-font)!important;color:var(--mg-ink)!important;font-weight:700!important;letter-spacing:-.01em!important;text-transform:none!important;text-align:left!important;line-height:1.25!important;background:none!important;padding:0!important;max-width:42rem}
-.entry-content h2:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){font-size:clamp(1.4rem,1.15rem + 1vw,1.9rem)!important;margin:1.7em 0 .55em!important}
-.entry-content h3:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){font-size:clamp(1.15rem,1.05rem + .45vw,1.35rem)!important;margin:1.5em 0 .5em!important}
-.entry-content :is(h4,h5,h6):not([class*="mg-"]):not(.entry-content [class*="mg-"] *){font-size:1.05rem!important;margin:1.3em 0 .4em!important}
-.entry-content>:is(h2,h3):first-child{margin-top:0!important}
-.entry-content :is(h2,h3,h4) a:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){color:inherit!important;text-decoration:none}
-.entry-content :is(h2,h3,h4) strong:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){font-weight:inherit}
-/* cale akapity zapisane jako naglowek (functions.php dodaje klase mgx-dlugi) = wstep */
-.entry-content :is(h2,h3,h4).mgx-dlugi:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){font-size:1.08rem!important;font-weight:500!important;line-height:1.65!important;color:var(--mg-txt)!important;letter-spacing:normal!important;margin:0 0 1.1em!important;max-width:50rem}
-.entry-content :is(h2,h3,h4).mgx-dlugi strong:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){font-weight:700;color:var(--mg-ink)}
+/* ---- typografia starych tresci (GenerateBlocks i bloki WordPressa) ---- */
+.entry-content :is(p,li,dd,dt,blockquote,figcaption,td,th):not([class*="mg-"]):not(.entry-content [class*="mg-"] *){letter-spacing:normal!important;text-align:left!important;word-spacing:normal!important}
+.entry-content :is(p,li,dd,dt,blockquote):not([class*="mg-"]):not(.entry-content [class*="mg-"] *){font-size:1em!important;line-height:1.65!important;color:var(--mg-txt)}
+.entry-content p:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){margin:0 0 .95em!important}
+.entry-content :is(p,ul,ol,blockquote):not([class*="mg-"]):not(.entry-content [class*="mg-"] *){max-width:var(--mg-tekst)}
+.entry-content :is(h2,h3,h4,h5,h6):not([class*="mg-"]):not(.entry-content [class*="mg-"] *){font-family:var(--mg-font)!important;color:var(--mg-ink)!important;font-weight:600!important;letter-spacing:-.005em!important;text-transform:none!important;text-align:left!important;line-height:1.25!important;background:none!important;padding:0!important;max-width:var(--mg-tekst)}
+.entry-content h2:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){font-size:clamp(1.38rem,1.2rem + .75vw,1.72rem)!important;margin:2.1rem 0 .7rem!important}
+.entry-content h3:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){font-size:clamp(1.16rem,1.08rem + .35vw,1.3rem)!important;margin:1.8rem 0 .55rem!important}
+.entry-content :is(h4,h5,h6):not([class*="mg-"]):not(.entry-content [class*="mg-"] *){font-size:1.06rem!important;margin:1.5rem 0 .45rem!important}
+.entry-content>:is(h2,h3,h4,p):first-child,.entry-content .mgx-czytaj-in>:is(h2,h3,h4):first-child{margin-top:0!important}
+.entry-content :is(h2,h3,h4,h5,h6) a:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){color:inherit!important;text-decoration:none!important}
+.entry-content :is(h2,h3,h4,h5,h6) strong:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){font-weight:inherit}
+/* pogrubienia delikatniej: 600 i ten sam kolor co tekst */
+.entry-content :is(strong,b):not([class*="mg-"]):not(.entry-content [class*="mg-"] *){font-weight:600;color:inherit}
+.entry-content .mgx-bez-bold :is(strong,b){font-weight:400!important}
+/* linki w tresci: kolor marki, subtelne podkreslenie */
+.entry-content a:not([class*="mg-"]):not([class*="mgx-"]):not(.gb-button):not(.wp-block-button__link):not(.entry-content [class*="mg-"] *){color:var(--mg-blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.18em;text-decoration-color:rgba(27,95,168,.38);transition:color .15s ease,text-decoration-color .15s ease}
+.entry-content a:not([class*="mg-"]):not([class*="mgx-"]):not(.gb-button):not(.wp-block-button__link):not(.entry-content [class*="mg-"] *):hover{color:var(--mg-red-d);text-decoration-color:currentColor}
+/* wstep: cale akapity zapisane jako naglowek (functions.php: klasa mgx-dlugi) */
+.entry-content :is(h2,h3,h4,h5,h6).mgx-dlugi:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){font-size:1.1em!important;font-weight:400!important;line-height:1.6!important;color:#24384c!important;letter-spacing:normal!important;margin:0 0 1.1em!important;max-width:var(--mg-tekst)}
+.entry-content :is(h2,h3,h4,h5,h6).mgx-dlugi :is(strong,b):not([class*="mg-"]):not(.entry-content [class*="mg-"] *){font-weight:600;color:var(--mg-ink)}
+/* krotki, calkowicie pogrubiony akapit = podtytul */
+.entry-content p.mgx-podtytul:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){font-size:1.12em!important;line-height:1.35!important;color:var(--mg-ink)!important;margin:1.7em 0 .45em!important}
+.entry-content p.mgx-podtytul :is(strong,b){font-weight:600}
 /* "etykieta" nad naglowkiem w GenerateBlocks: bez rozstrzelenia, jako naglowek */
-.entry-content p.mgx-nad:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){display:block!important;font-size:clamp(1.3rem,1.1rem + .8vw,1.7rem)!important;font-weight:800!important;line-height:1.25!important;color:var(--mg-ink)!important;text-transform:lowercase!important;letter-spacing:-.005em!important;margin:1.5em 0 .5em!important;max-width:42rem}
-.entry-content p.mgx-nad+:is(h2,h3):not(.mgx-dlugi):not([class*="mg-"]):not(.entry-content [class*="mg-"] *){margin-top:0!important;font-size:1.2rem!important}
+.entry-content p.mgx-nad:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){display:block!important;font-size:clamp(1.38rem,1.2rem + .75vw,1.72rem)!important;font-weight:600!important;line-height:1.25!important;color:var(--mg-ink)!important;text-transform:lowercase!important;letter-spacing:-.005em!important;margin:2rem 0 .6rem!important;max-width:var(--mg-tekst)}
+.entry-content p.mgx-nad+:is(h2,h3):not(.mgx-dlugi):not([class*="mg-"]):not(.entry-content [class*="mg-"] *){margin-top:0!important;font-size:1.16rem!important}
 .entry-content p.mgx-nad:not([class*="mg-"]):not(.entry-content [class*="mg-"] *)::first-letter{text-transform:uppercase}
 .entry-content .mgx-ukryj:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){display:none!important}
 /* tla akapitow (np. niebieskie paski "RABATY", "DOPLATY" w cenniku) -> zwykly podtytul */
-.entry-content p.has-background:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){background:none!important;color:var(--mg-ink)!important;font-weight:700!important;font-size:1.15rem!important;padding:0!important;margin:1.4em 0 .4em!important;text-align:left!important}
+.entry-content p.has-background:not(.mgx-promo):not([class*="mg-"]):not(.entry-content [class*="mg-"] *){background:none!important;color:var(--mg-ink)!important;font-weight:600!important;font-size:1.12em!important;padding:0!important;margin:1.6em 0 .45em!important;text-align:left!important;text-transform:none!important}
 .entry-content p.has-background:not([class*="mg-"]):not(.entry-content [class*="mg-"] *) *{color:inherit!important}
-.entry-content :is(ul,ol):not([class*="mg-"]):not(.entry-content [class*="mg-"] *){padding-left:1.25em;margin:0 0 1.2em}
-.entry-content li:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){margin:0 0 .45em}
-.entry-content li:not([class*="mg-"]):not(.entry-content [class*="mg-"] *)::marker{color:var(--mg-red)}
-.entry-content strong:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){color:var(--mg-ink)}
-.entry-content a:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){color:var(--mg-blue);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+/* listy: rowne wciecie i odstepy */
+.entry-content :is(ul,ol):not([class*="mg-"]):not(.entry-content [class*="mg-"] *){padding-left:1.35em!important;margin:0 0 1.15em!important}
+.entry-content li:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){margin:0 0 .45em!important;padding-left:.2em}
+.entry-content li:not([class*="mg-"]):not(.entry-content [class*="mg-"] *)>:is(ul,ol){margin:.45em 0 0!important}
+.entry-content ul>li:not([class*="mg-"]):not(.entry-content [class*="mg-"] *)::marker{color:var(--mg-red)}
+.entry-content ol>li:not([class*="mg-"]):not(.entry-content [class*="mg-"] *)::marker{color:var(--mg-navy-2);font-weight:600}
 .entry-content :is(.has-text-color,[style*="color"]):not([class*="mg-"]):not(.entry-content [class*="mg-"] *):not(.has-background){color:inherit!important}
-.entry-content hr:not([class*="mg-"]):not(.entry-content [class*="mg-"] *),.entry-content .wp-block-separator:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){border:0!important;border-top:1px solid var(--mg-line)!important;background:none!important;height:0!important;width:100%!important;max-width:none!important;margin:clamp(28px,4vw,44px) 0!important;opacity:1}
+.entry-content hr:not([class*="mg-"]):not(.entry-content [class*="mg-"] *),.entry-content .wp-block-separator:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){border:0!important;border-top:1px solid var(--mg-line)!important;background:none!important;height:0!important;width:100%!important;max-width:var(--mg-tekst)!important;margin:clamp(26px,4vw,40px) 0!important;opacity:1}
+/* cytaty */
+.entry-content blockquote:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){border-left:3px solid var(--mg-line)!important;padding:4px 0 4px 18px!important;margin:0 0 1.2em!important;font-style:normal;color:var(--mg-ink)}
+
+/* ramka promocji: akapit z rabatem (functions.php: obrazek "-10% OFF" -> plakietka .mgx-rabat) */
+.entry-content :is(p,h2,h3,h4,h5,h6).mgx-promo:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){background:#fcefed!important;border-radius:var(--mg-r)!important;padding:14px 18px!important;margin:0 0 1.3em!important;font-size:1em!important;font-weight:400!important;line-height:1.6!important;color:var(--mg-ink)!important;max-width:var(--mg-tekst)}
+.entry-content .mgx-promo :is(strong,b):not([class*="mg-"]):not(.entry-content [class*="mg-"] *){font-weight:600!important;color:var(--mg-ink)!important}
+.mgx-rabat{display:inline-block;background:var(--mg-red);color:#fff;font-weight:600;font-size:.84em;line-height:1.45;padding:0 .42em;border-radius:4px;margin:0 .2em;vertical-align:.06em;white-space:nowrap;letter-spacing:.01em}
+/* lista z recznych punktorow "•" */
+.entry-content ul.mgx-pkt{padding-left:1.35em!important;margin:0 0 1.15em!important;max-width:var(--mg-tekst)}
+
+/* "Czytaj wiecej": dalsza, dluga tresc strony zwinieta pod przyciskiem (tresc zostaje w kodzie) */
+.entry-content .mgx-czytaj{margin:clamp(22px,3vw,32px) 0 0;max-width:var(--mg-tekst)}
+.entry-content .mgx-czytaj>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:12px;min-height:48px;padding:10px 22px;border:1px solid var(--mg-ink);border-radius:8px;font-weight:600;color:var(--mg-ink);line-height:1.2;background:#fff;transition:background-color .15s ease}
+.entry-content .mgx-czytaj>summary::-webkit-details-marker{display:none}
+.entry-content .mgx-czytaj>summary:after{content:"";width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);margin-top:-5px;transition:transform .2s}
+.entry-content .mgx-czytaj[open]>summary:after{transform:rotate(-135deg);margin-top:3px}
+.entry-content .mgx-czytaj>summary:hover{background:var(--mg-sand)}
+.entry-content .mgx-czytaj .mgx-cz-z,.entry-content .mgx-czytaj[open] .mgx-cz-o{display:none}
+.entry-content .mgx-czytaj[open] .mgx-cz-z{display:inline}
+.entry-content .mgx-czytaj-in{padding-top:clamp(22px,3vw,32px)}
+body.mg-jacht-strona .entry-content .mgx-czytaj{border-top:1px solid var(--mg-line);padding-top:clamp(26px,4vw,40px);max-width:none}
+body.mg-jacht-strona .entry-content .mgx-czytaj-in{max-width:var(--mg-tekst)}
+
+/* filmy YouTube: podglad, odtwarzacz po kliknieciu */
+.entry-content .wp-block-embed__wrapper:has(>.mgx-yt):before{display:none!important}
+.mgx-yt{position:relative;display:block;aspect-ratio:16/9;border-radius:var(--mg-r);overflow:hidden;background:var(--mg-navy-3)}
+.mgx-yt img{position:absolute;inset:0;width:100%!important;height:100%!important;object-fit:cover;border-radius:0!important;max-height:none!important;margin:0!important}
+.mgx-yt-play{position:absolute;left:50%;top:50%;width:68px;height:48px;margin:-24px 0 0 -34px;border-radius:12px;background:rgba(15,42,68,.86);transition:background-color .2s}
+.mgx-yt-play:after{content:"";position:absolute;left:28px;top:15px;border-style:solid;border-width:9px 0 9px 15px;border-color:transparent transparent transparent #fff}
+.mgx-yt:hover .mgx-yt-play{background:var(--mg-red)}
+.mgx-yt-f{width:100%;aspect-ratio:16/9;height:auto;border:0;border-radius:var(--mg-r);display:block}
 
 /* kontenery GenerateBlocks: bez kolorowych tel i wielkich paddingow, siatka w ramach tresci */
 .entry-content .gb-container:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){background-color:transparent!important;background-image:none!important;border-radius:0!important;box-shadow:none!important;min-height:0!important;color:inherit!important;margin-left:0!important;margin-right:0!important;max-width:none!important}
@@ -452,10 +554,10 @@ body.single .entry-meta a{color:var(--mg-mut)}
 
 /* przyciski GenerateBlocks i WordPressa jak w koncepcji */
 .entry-content .gb-button-wrapper:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 6px!important;justify-content:flex-start!important}
-.entry-content .gb-button:not([class*="mg-"]):not(.entry-content [class*="mg-"] *),.entry-content .wp-block-button__link:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){display:inline-flex!important;align-items:center;justify-content:center;min-height:46px;padding:11px 22px!important;border-radius:8px!important;font-size:1rem!important;font-weight:700!important;line-height:1.2!important;text-decoration:none!important;text-transform:none!important;letter-spacing:normal!important;background:var(--mg-red)!important;background-image:none!important;color:#fff!important;border:0!important;box-shadow:none!important;width:auto!important;margin:0!important}
+.entry-content .gb-button:not([class*="mg-"]):not(.entry-content [class*="mg-"] *),.entry-content .wp-block-button__link:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){display:inline-flex!important;align-items:center;justify-content:center;min-height:46px;padding:11px 22px!important;border-radius:8px!important;font-size:1rem!important;font-weight:600!important;line-height:1.2!important;text-decoration:none!important;text-transform:none!important;letter-spacing:normal!important;background:var(--mg-red)!important;background-image:none!important;color:#fff!important;border:0!important;box-shadow:none!important;width:auto!important;margin:0!important}
 .entry-content .gb-button:not([class*="mg-"]):not(.entry-content [class*="mg-"] *):hover,.entry-content .wp-block-button__link:not([class*="mg-"]):not(.entry-content [class*="mg-"] *):hover{background:var(--mg-red-d)!important;color:#fff!important}
 /* "przycisk" bez linku (span) uzyty jako naglowek listy -> zwykly naglowek */
-.entry-content span.gb-button:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){display:block!important;background:none!important;color:var(--mg-ink)!important;padding:0!important;min-height:0!important;font-size:1.02rem!important;font-weight:700!important;letter-spacing:.01em!important;margin:1.2em 0 .4em!important}
+.entry-content span.gb-button:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){display:block!important;background:none!important;color:var(--mg-ink)!important;padding:0!important;min-height:0!important;font-size:1.02rem!important;font-weight:600!important;letter-spacing:.01em!important;margin:1.2em 0 .4em!important}
 .entry-content .gb-button-wrapper:not([class*="mg-"]):not(.entry-content [class*="mg-"] *) .gb-button+.gb-button{background:transparent!important;color:var(--mg-ink)!important;box-shadow:inset 0 0 0 2px var(--mg-ink)!important}
 
 /* zdjecia w tresci: w siatce, zaokraglone, bez cieni i dziur */
@@ -466,7 +568,8 @@ body.single .entry-meta a{color:var(--mg-mut)}
 .entry-content figcaption:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){font-size:.88rem!important;color:var(--mg-mut)!important;margin-top:8px}
 .entry-content .alignleft:not([class*="mg-"]):not(.entry-content [class*="mg-"] *),.entry-content .alignright:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){float:none!important;margin:0 0 1em!important}
 .entry-content :is(p,h2,h3,h4,li,td) img:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){display:inline-block;vertical-align:middle;width:auto;height:auto;max-height:110px;margin:4px 8px 4px 0;border-radius:6px}
-.entry-content :is(p,h2,h3,h4) img:is([src*="discount"],[src*="rabat"]):not([class*="mg-"]):not(.entry-content [class*="mg-"] *){max-height:40px;border-radius:0}
+/* zabezpieczenie: gdyby obrazek rabatu zostal w akapicie, ma wysokosc wiersza tekstu (normalnie zamieniany na plakietke w functions.php) */
+.entry-content :is(p,h2,h3,h4,li) img:is([src*="discount"],[src*="rabat"],[src*="procent"]):not([class*="mg-"]){height:1.35em!important;width:auto!important;max-height:none;margin:0 .25em!important;vertical-align:-.3em!important;border-radius:0}
 .entry-content .wp-block-embed:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){margin:0 0 1.4em;max-width:860px}
 .entry-content .wp-block-embed iframe:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){border-radius:var(--mg-r);width:100%;height:auto;aspect-ratio:16/9;background:var(--mg-navy-3)}
 .entry-content .wp-block-media-text:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){background:var(--mg-sand)!important;border-radius:var(--mg-r);overflow:hidden;margin:0 0 1.4em}
@@ -491,7 +594,7 @@ body.single .entry-meta a{color:var(--mg-mut)}
 .entry-content .gb-grid-column:not([class*="mg-"]):not(.entry-content [class*="mg-"] *):has(figure + h2 + h6) h6:before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:50%;background:var(--mg-navy-2)}
 .entry-content .gb-grid-column:not([class*="mg-"]):not(.entry-content [class*="mg-"] *):has(figure + h2 + h6) h6 strong{font-weight:inherit;color:inherit}
 .entry-content .gb-grid-column:not([class*="mg-"]):not(.entry-content [class*="mg-"] *):has(figure + h2 + h6) h6 a{color:inherit!important;text-decoration:none!important}
-.entry-content .gb-grid-column:not([class*="mg-"]):not(.entry-content [class*="mg-"] *):has(figure + h2 + h6) h6:last-of-type{font-weight:700!important;color:var(--mg-ink)!important;font-size:1.02rem!important;padding-left:0!important;margin-top:6px!important}
+.entry-content .gb-grid-column:not([class*="mg-"]):not(.entry-content [class*="mg-"] *):has(figure + h2 + h6) h6:last-of-type{font-weight:600!important;color:var(--mg-ink)!important;font-size:1.02rem!important;padding-left:0!important;margin-top:6px!important}
 .entry-content .gb-grid-column:not([class*="mg-"]):not(.entry-content [class*="mg-"] *):has(figure + h2 + h6) h6:last-of-type:before{display:none}
 .entry-content .gb-grid-column:not([class*="mg-"]):not(.entry-content [class*="mg-"] *):has(figure + h2 + h6) .gb-button-wrapper{margin:auto 16px 0!important;padding:12px 0 14px;border-top:1px solid var(--mg-line-2)}
 .entry-content .gb-grid-column:not([class*="mg-"]):not(.entry-content [class*="mg-"] *):has(figure + h2 + h6) .gb-button{background:none!important;color:var(--mg-blue)!important;padding:0!important;min-height:0;font-size:.95rem!important}
@@ -504,7 +607,7 @@ body.single .entry-meta a{color:var(--mg-mut)}
 .entry-content .wp-block-table:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){margin:0 0 1.6em;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .entry-content table:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){width:100%;border-collapse:collapse;border:1px solid var(--mg-line)!important;border-radius:var(--mg-r);background:#fff!important;font-size:.95rem;margin:0}
 .entry-content table:not([class*="mg-"]):not(.entry-content [class*="mg-"] *) :is(td,th){border:0!important;border-bottom:1px solid var(--mg-line-2)!important;padding:10px 12px!important;vertical-align:top;background:transparent!important;color:var(--mg-txt)!important;font-size:inherit!important;line-height:1.5!important}
-.entry-content table:not([class*="mg-"]):not(.entry-content [class*="mg-"] *) :is(thead th,thead td){background:#eef2f6!important;color:var(--mg-ink)!important;font-weight:700;font-size:.9rem!important}
+.entry-content table:not([class*="mg-"]):not(.entry-content [class*="mg-"] *) :is(thead th,thead td){background:#eef2f6!important;color:var(--mg-ink)!important;font-weight:600;font-size:.9rem!important}
 .entry-content table:not([class*="mg-"]):not(.entry-content [class*="mg-"] *) tr:last-child>*{border-bottom:0!important}
 .entry-content .is-style-stripes:not([class*="mg-"]):not(.entry-content [class*="mg-"] *) tbody tr:nth-child(odd){background:transparent!important}
 .entry-content .is-style-stripes:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){border-bottom:0!important}
@@ -512,7 +615,7 @@ body.single .entry-meta a{color:var(--mg-mut)}
 .entry-content table.has-fixed-layout:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){table-layout:auto}
 /* cenniki (3 i wiecej kolumn): pierwsza kolumna przyklejona, reszta przewijana palcem */
 .entry-content table:not([class*="mg-"]):not(.entry-content [class*="mg-"] *):has(td:nth-child(3)) tr>:first-child{position:sticky;left:0;background:#fff!important;z-index:1;box-shadow:1px 0 0 var(--mg-line-2)}
-.entry-content table:not([class*="mg-"]):not(.entry-content [class*="mg-"] *):has(td:nth-child(3)) tr:first-child>*{background:#eef2f6!important;color:var(--mg-ink)!important;font-weight:700}
+.entry-content table:not([class*="mg-"]):not(.entry-content [class*="mg-"] *):has(td:nth-child(3)) tr:first-child>*{background:#eef2f6!important;color:var(--mg-ink)!important;font-weight:600}
 .entry-content table:not([class*="mg-"]):not(.entry-content [class*="mg-"] *):has(td:nth-child(3)) :is(td,th):not(:first-child){white-space:nowrap}
 @media (max-width:781px){
   .entry-content table:not([class*="mg-"]):not(.entry-content [class*="mg-"] *):has(td:nth-child(3)){font-size:.86rem;min-width:max-content}
@@ -523,7 +626,7 @@ body.single .entry-meta a{color:var(--mg-mut)}
   .entry-content table:not([class*="mg-"]):not(.entry-content [class*="mg-"] *):not(:has(thead)):not(:has(td:nth-child(3))) tr{border-bottom:1px solid var(--mg-line)}
   .entry-content table:not([class*="mg-"]):not(.entry-content [class*="mg-"] *):not(:has(thead)):not(:has(td:nth-child(3))) tr:last-child{border-bottom:0}
   .entry-content table:not([class*="mg-"]):not(.entry-content [class*="mg-"] *):not(:has(thead)):not(:has(td:nth-child(3))) td{border:0!important}
-  .entry-content table:not([class*="mg-"]):not(.entry-content [class*="mg-"] *):not(:has(thead)):not(:has(td:nth-child(3))) td:first-child{font-weight:700;padding-bottom:2px!important}
+  .entry-content table:not([class*="mg-"]):not(.entry-content [class*="mg-"] *):not(:has(thead)):not(:has(td:nth-child(3))) td:first-child{font-weight:600;padding-bottom:2px!important}
 }
 
 /* blok "Preformatowany" uzyty jako zwykly tekst: normalna czcionka i zawijanie wierszy */
@@ -532,10 +635,10 @@ body.single .entry-meta a{color:var(--mg-mut)}
 /* akordeony, spis tresci, ikony udostepniania, oceny gwiazdkowe */
 .entry-content .sp-easy-accordion:not([class*="mg-"]):not(.entry-content [class*="mg-"] *),.entry-content .sp-ea-one:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){border-top:1px solid var(--mg-line);max-width:880px}
 .entry-content .ea-card:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){border:0!important;border-bottom:1px solid var(--mg-line)!important;background:transparent!important;margin:0!important;border-radius:0!important}
-.entry-content .ea-header:not([class*="mg-"]):not(.entry-content [class*="mg-"] *),.entry-content .ea-header a:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){background:transparent!important;color:var(--mg-ink)!important;font-weight:700!important;font-size:1rem!important;padding:14px 0!important;border:0!important;text-decoration:none!important}
+.entry-content .ea-header:not([class*="mg-"]):not(.entry-content [class*="mg-"] *),.entry-content .ea-header a:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){background:transparent!important;color:var(--mg-ink)!important;font-weight:600!important;font-size:1rem!important;padding:14px 0!important;border:0!important;text-decoration:none!important}
 .entry-content .ea-body:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){background:transparent!important;border:0!important;padding:0 0 14px!important}
 .entry-content #ez-toc-container,.entry-content .ez-toc-v2_0_89{background:var(--mg-sand)!important;border:0!important;border-radius:var(--mg-r)!important;box-shadow:none!important;padding:16px 20px!important;margin:0 0 1.6em!important;max-width:640px;width:auto!important;display:block!important}
-.entry-content .ez-toc-title{font-weight:700!important;color:var(--mg-ink)!important;font-size:1rem!important}
+.entry-content .ez-toc-title{font-weight:600!important;color:var(--mg-ink)!important;font-size:1rem!important}
 .entry-content #ez-toc-container a{color:var(--mg-blue)!important}
 .entry-content .sfsi_Sicons{display:flex!important;gap:8px;margin:1.2em 0!important;float:none!important;width:auto!important}
 .entry-content .sfsi_Sicons>div{float:none!important;margin:0!important}
@@ -544,7 +647,7 @@ body.single .entry-meta a{color:var(--mg-mut)}
 /* formularze CF7 na starych stronach (kontakt) */
 .entry-content .wpcf7 :is(input[type=text],input[type=email],input[type=tel],textarea):not([class*="mg-"]):not(.entry-content [class*="mg-"] *){width:100%;max-width:560px;border:1px solid var(--mg-line);border-radius:8px;background:#fff;padding:10px 12px;font-size:1rem}
 .entry-content .wpcf7 textarea:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){height:140px}
-.entry-content .wpcf7-submit:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){background:var(--mg-red)!important;color:#fff!important;border-radius:8px;min-height:48px;padding:12px 26px;font-weight:700;border:0}
+.entry-content .wpcf7-submit:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){background:var(--mg-red)!important;color:#fff!important;border-radius:8px;min-height:48px;padding:12px 26px;font-weight:600;border:0}
 .entry-content .wpcf7-submit:not([class*="mg-"]):not(.entry-content [class*="mg-"] *):hover{background:var(--mg-red-d)!important}
 
 /* ==========================================================================
@@ -561,7 +664,7 @@ body:is(.blog,.archive,.search) .site-main article .inside-article{position:rela
 body:is(.blog,.archive,.search) .site-main article .post-image{order:-1;margin:0 0 14px!important;aspect-ratio:16/10;overflow:hidden;background:#dfe6ec}
 body:is(.blog,.archive,.search) .site-main article .post-image img{width:100%;height:100%;object-fit:cover;display:block}
 body:is(.blog,.archive,.search) .site-main article .entry-header{padding:0 18px;margin:0}
-body:is(.blog,.archive,.search) .site-main article .entry-title{font-size:1.2rem!important;line-height:1.3!important;margin:0 0 6px!important;font-weight:700}
+body:is(.blog,.archive,.search) .site-main article .entry-title{font-size:1.2rem!important;line-height:1.3!important;margin:0 0 6px!important;font-weight:600}
 body:is(.blog,.archive,.search) .site-main article .entry-title a{color:var(--mg-ink)!important;text-decoration:none}
 body:is(.blog,.archive,.search) .site-main article .entry-title a:after{content:"";position:absolute;inset:0;z-index:1}
 body:is(.blog,.archive,.search) .site-main article .entry-header .entry-meta{font-size:.85rem;color:var(--mg-mut);margin:0 0 6px}
@@ -573,13 +676,21 @@ body:is(.blog,.archive,.search) .site-main article .read-more-container,body:is(
 @media (hover:hover){body:is(.blog,.archive,.search) .site-main article .inside-article:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(15,42,68,.12)}}
 @media (min-width:600px){body:is(.blog,.archive,.search) .site-main{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (min-width:1000px){body:is(.blog,.archive,.search) .site-main{grid-template-columns:repeat(3,minmax(0,1fr))}}
-body:is(.blog,.archive,.search) .paging-navigation{grid-column:1/-1;font-weight:700}
+body:is(.blog,.archive,.search) .paging-navigation{grid-column:1/-1;font-weight:600}
 
 /* ==========================================================================
    14. Kalendarz Yacht CMS: wysokosc wedlug tresci (widget sam ja zmienia),
    bez sztywnych 500 px, ktore zostawialy pusta przestrzen pod kalendarzem
    ========================================================================== */
 iframe[id*="yacht-wdg"]:not(.yacht-wdg-fullscreen){min-height:0!important}
+/* bez dodatkowego odstepu pod kalendarzem (widget sam rezerwuje miejsce na 6. tydzien miesiaca) */
+.mg-rez [data-yacht-widget]{margin:0 0 6px}
+.mg-rez [data-yacht-widget]+.mg-mala{margin-top:0!important}
+.mg-rez [data-yacht-widget] iframe{display:block;width:100%;border:0}
+/* jacht bez kalendarza online: informacja i telefon zamiast pustego miejsca */
+.mg-kal-brak{background:var(--mg-sand);border-radius:var(--mg-r);padding:18px 20px;margin:0 0 12px}
+.mg-kal-brak p{margin:0 0 12px!important}
+.mg-kal-brak .wp-block-buttons{margin:0}
 
 /* galeria z jednym zdjeciem: na cala szerokosc */
 .mg-galeria.wp-block-gallery>figure.wp-block-image:only-child{flex-basis:100%!important;width:100%!important}
@@ -590,3 +701,41 @@ iframe[id*="yacht-wdg"]:not(.yacht-wdg-fullscreen){min-height:0!important}
 @media (prefers-reduced-motion:reduce){
   .mg-jacht,.mg-typ img,.mg-mob,.mg-st-social a,.entry-content .gb-grid-column,body .site-main article .inside-article,.mg-faq summary:after,.mg-btn .wp-block-button__link{transition:none}
 }
+
+/* ==========================================================================
+   16. Mapa Google na stronach (functions.php): przycisk zamiast ciezkiej ramki
+   ========================================================================== */
+.mgx-mapa{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:10px;min-height:150px;padding:22px 20px;border-radius:var(--mg-r);background:var(--mg-sand);margin:0 0 1.2em;max-width:var(--mg-tekst)}
+.mgx-mapa-btn{display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:10px 20px;border:1px solid var(--mg-ink)!important;border-radius:8px;background:#fff!important;color:var(--mg-ink)!important;font:inherit;font-weight:600!important;cursor:pointer;line-height:1.2}
+.mgx-mapa-btn:before{content:"";width:16px;height:16px;flex:0 0 auto;background:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d33a2c' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z'/%3E%3Ccircle cx='12' cy='10' r='3'/%3E%3C/svg%3E")}
+.mgx-mapa-btn:hover{background:var(--mg-sand)!important}
+.mgx-mapa-adr{font-size:.92rem;color:var(--mg-mut)}
+.mgx-mapa-f{width:100%;height:380px;border:0;border-radius:var(--mg-r);display:block;margin:0 0 1.2em}
+/* naglowek nad kartami jachtow wstawionymi shortcodem */
+.entry-content .mg-flota-naglowek{margin:2.2rem 0 .9rem!important;font-size:clamp(1.38rem,1.2rem + .75vw,1.72rem)!important}
+/* cytaty: czcionka bez kursywy (brak pliku kursywy - sztuczna kursywa wyglada slabo) */
+.entry-content blockquote,.entry-content blockquote p,.mg-opinie .wp-block-quote p{font-style:normal!important}
+/* przycisk "Wyslij": bialy napis takze po najechaniu i w fokusie (GP ustawia tam ciemny kolor) */
+.wpcf7 input.wpcf7-submit,.wpcf7 input.wpcf7-submit:hover,.wpcf7 input.wpcf7-submit:focus,.wpcf7 input.wpcf7-submit:active{color:#fff!important}
+/* stronicowanie bloga i kategorii */
+body:is(.blog,.archive,.search) .paging-navigation .nav-links{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+body:is(.blog,.archive,.search) .paging-navigation .page-numbers{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:0 14px;border:1px solid var(--mg-line);border-radius:8px;background:#fff;color:var(--mg-ink);text-decoration:none;font-weight:600}
+body:is(.blog,.archive,.search) .paging-navigation .page-numbers.current{background:var(--mg-navy);border-color:var(--mg-navy);color:#fff}
+body:is(.blog,.archive,.search) .paging-navigation .page-numbers.dots{border:0;background:none;min-width:0;padding:0 4px}
+body:is(.blog,.archive,.search) .paging-navigation a.page-numbers:hover{border-color:var(--mg-ink)}
+/* wyposazenie jachtu: rowne punkty, bez przypadkowych pogrubien */
+.mg-wyp li::marker{color:var(--mg-red)}
+.mg-wyp li strong,.mg-wyp li b{font-weight:400}
+/* tabele: bez grubej czarnej linii pod naglowkiem (styl bloku Tabela WordPressa) */
+.entry-content .wp-block-table :is(thead,tfoot){border:0!important}
+/* cenniki z wieloma kolumnami: nigdy nie sciskane (przewijanie palcem), na komputerze szersze niz kolumna tekstu */
+.entry-content table:not([class*="mg-"]):has(td:nth-child(3)){min-width:max-content}
+.entry-content table:not([class*="mg-"]):has(td:nth-child(3)) tr>:first-child{min-width:8.5em;white-space:normal}
+@media (min-width:900px){
+  body.mg-zwykla .entry-content .wp-block-table:has(td:nth-child(4)){width:min(980px,100vw - 48px)!important;max-width:none!important;position:relative;left:50%;transform:translateX(-50%)}
+  body.mg-zwykla .entry-content .wp-block-table:has(td:nth-child(4)) table{min-width:100%}
+}
+/* zwykle strony: kolumna tekstu jest waska (ok. 70 znakow), wiec stare siatki GenerateBlocks i kolumny ukladamy jedna pod druga */
+body.mg-zwykla .entry-content .gb-grid-wrapper:not([class*="mg-"]){grid-template-columns:minmax(0,1fr)!important}
+body.mg-zwykla .entry-content .wp-block-columns:not([class*="mg-"]){flex-wrap:wrap!important}
+body.mg-zwykla .entry-content .wp-block-columns:not([class*="mg-"])>.wp-block-column{flex-basis:100%!important;width:100%!important}
