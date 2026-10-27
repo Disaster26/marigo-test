@@ -218,6 +218,8 @@ body.mg-jacht-strona .page-hero{background:#fff!important;color:var(--mg-ink)!im
 body.mg-jacht-strona .page-hero h1{color:var(--mg-ink)!important;font-size:clamp(1.4rem,1.1rem + 1.6vw,2.4rem);line-height:1.2;margin:0}
 body.mg-jacht-strona .page-hero .inside-page-hero{max-width:var(--mg-wrap)}
 body.mg-jacht-strona.one-container .site-content{padding:0 16px 40px}
+body.mg-jacht-strona .site-content .content-area{max-width:var(--mg-wrap);margin-left:auto;margin-right:auto}
+body.mg-jacht-strona .page-hero .inside-page-hero{padding-left:0;padding-right:0}
 body.mg-jacht-strona .entry-content>.mg-jhero{margin-top:12px}
 .mg-jsek{padding:clamp(32px,5vw,56px) 0;border-top:1px solid var(--mg-line);margin:0!important}
 .mg-jsek h2{font-size:clamp(1.4rem,1.1rem + 1.2vw,1.9rem);margin:0 0 .5em}
