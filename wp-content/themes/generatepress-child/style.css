@@ -739,3 +739,16 @@ body:is(.blog,.archive,.search) .paging-navigation a.page-numbers:hover{border-c
 body.mg-zwykla .entry-content .gb-grid-wrapper:not([class*="mg-"]){grid-template-columns:minmax(0,1fr)!important}
 body.mg-zwykla .entry-content .wp-block-columns:not([class*="mg-"]){flex-wrap:wrap!important}
 body.mg-zwykla .entry-content .wp-block-columns:not([class*="mg-"])>.wp-block-column{flex-basis:100%!important;width:100%!important}
+/* osadzony wpis WordPressa (link do innego wpisu) jako prosta ramka z linkiem */
+.entry-content blockquote.wp-embedded-content{display:block!important;position:static!important;clip:auto!important;visibility:visible!important;height:auto!important;width:auto!important;background:var(--mg-sand)!important;border:0!important;border-radius:var(--mg-r);padding:14px 18px!important;margin:0 0 1.2em!important}
+.entry-content blockquote.wp-embedded-content a{font-weight:600}
+.entry-content .wp-block-embed.is-type-wp-embed .wp-block-embed__wrapper:before{display:none!important}
+/* tabele wysrodkowane (aligncenter) i filmy w tresci nie rozpychaja strony */
+.entry-content figure.wp-block-table,.entry-content figure.wp-block-table.aligncenter{display:block!important;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.entry-content video,.entry-content .wp-block-video video{max-width:100%!important;height:auto!important}
+.entry-content .wp-block-video{max-width:100%}
+/* bardzo dlugie slowa i adresy w tytulach i tresci lamia sie zamiast wypychac strone w bok */
+.page-hero h1,.entry-content :is(h1,h2,h3,h4,p,li,td,a){overflow-wrap:break-word}
+.page-hero{overflow:hidden}
+/* stare tabele z edytora klasycznego ze sztywna szerokoscia w px */
+.entry-content table[style*="width"]{width:auto!important;max-width:100%!important;height:auto!important;display:block;overflow-x:auto}
