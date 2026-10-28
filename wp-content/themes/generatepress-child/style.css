@@ -887,3 +887,34 @@ body.mg-zwykla .entry-content .wp-block-columns:not([class*="mg-"])>.wp-block-co
 /* numery telefonow w tabelach nie lamia sie w srodku */
 .entry-content .wp-block-table td.mgx-nr,.entry-content .wp-block-table td.mgx-nr *{white-space:nowrap!important}
 .entry-content .wp-block-table table:has(td.mgx-nr){table-layout:auto!important}
+
+/* === 28.10 cennik jachtu jako wykres sezonow (zamiast tabeli Termin/Doba/7 dob) === */
+.mg-sez{--t1:#2a9d8f;--t2:#e9a23b;--t3:var(--mg-red);background:#fff;border:1px solid var(--mg-line);border-radius:14px;padding:16px 16px 12px;margin:0 0 12px}
+.entry-content .mg-sez p{margin:0!important}
+.entry-content .mg-sez-gora{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px!important}
+.mg-sez-gora span{background:var(--mg-sand);border-radius:999px;padding:6px 12px;font-size:.9rem;color:var(--mg-txt);line-height:1.2}
+.mg-sez-gora b{color:var(--mg-ink);font-size:1.05rem}
+.mg-sez-gora span:first-child{background:var(--mg-navy);color:#fff}
+.mg-sez-gora span:first-child b{color:#fff}
+.entry-content ol.mg-sez-lista{list-style:none!important;margin:0!important;padding:0!important}
+.entry-content ol.mg-sez-lista li{display:grid;grid-template-columns:7.2em minmax(40px,1fr) auto;align-items:center;gap:12px;margin:0!important;padding:8px 0;border-top:1px solid var(--mg-line-2);line-height:1.2}
+.entry-content ol.mg-sez-lista li:first-child{border-top:0}
+.entry-content ol.mg-sez-lista li::before{content:none!important;display:none!important}
+.mg-sez-d{font-size:.92rem;color:var(--mg-txt);white-space:nowrap}
+.mg-sez-bar{display:block;height:10px;border-radius:99px;background:#efeae1;overflow:hidden}
+.mg-sez-bar i{display:block;height:100%;border-radius:99px;background:var(--t2)}
+.mg-t1 .mg-sez-bar i{background:var(--t1)}
+.mg-t3 .mg-sez-bar i{background:var(--t3)}
+.mg-sez-c{text-align:right;white-space:nowrap}
+.mg-sez-c b{display:block;font-size:1.02rem;color:var(--mg-ink)}
+.mg-t3 .mg-sez-c b{color:var(--mg-red-d)}
+.mg-sez-c small{display:block;font-size:.76rem;color:var(--mg-mut);margin-top:1px}
+.entry-content .mg-sez-leg{display:flex;flex-wrap:wrap;gap:4px 14px;margin:10px 0 0!important;font-size:.8rem;color:var(--mg-mut)}
+.mg-sez-leg span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px;background:var(--t2)}
+.mg-sez-leg .mg-t1::before{background:var(--t1)}
+.mg-sez-leg .mg-t3::before{background:var(--t3)}
+.entry-content .mg-sez-dod{display:flex;flex-wrap:wrap;gap:6px 8px;margin:12px 0 0!important;padding-top:12px;border-top:1px solid var(--mg-line-2)}
+.mg-sez-dod span{font-size:.86rem;color:var(--mg-txt);border:1px solid var(--mg-line);border-radius:999px;padding:4px 10px}
+.mg-sez-dod b{color:var(--mg-ink)}
+.mg-cp-panel .mg-sez{border:0;padding:4px 0 6px;margin:6px 0 8px}
+@media (max-width:380px){.entry-content ol.mg-sez-lista li{grid-template-columns:6.6em minmax(30px,1fr) auto;gap:9px}.mg-sez-d{font-size:.86rem}}
