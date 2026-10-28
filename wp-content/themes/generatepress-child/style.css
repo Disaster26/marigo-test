@@ -1101,3 +1101,131 @@ html.mg-lb-on{overflow:hidden}
   .mg-szukaj-sek .mg-sz{padding:16px 14px}
 }
 @media (max-width:699px){.mg-sz-od{grid-column:auto}.mg-sz-p input[type=date]{padding:8px 6px!important;font-size:.95rem!important}.mg-szukaj-sek{padding-top:28px!important;padding-bottom:28px!important}}
+
+/* ==========================================================================
+   v8 (28.10, uwagi klientki): szersza strona, oryginalne tresci, cennik w tabelach,
+   lokalizacje, podobne jachty, 4 Antile 33, opis nad galeria
+   ========================================================================== */
+:root{--mg-wrap:1240px;--mg-tekst:46rem}
+/* strony (nie wpisy): kontener tresci na szerokosc strony, tekst ciagly w czytelnej kolumnie od lewej */
+body.mg-zwykla.page .entry-content,body.mg-zwykla.page .inside-article>.entry-header{max-width:var(--mg-wrap)}
+body.mg-zwykla.page .page-hero .inside-page-hero{max-width:var(--mg-wrap)!important}
+@media (min-width:900px){
+  body.mg-zwykla.page .entry-content .mg-flota{width:auto;left:auto;transform:none}
+  body.mg-zwykla.page .entry-content .wp-block-table:has(td:nth-child(4)){width:auto!important;left:auto;transform:none;max-width:100%!important}
+}
+
+/* zdjecie na glownej: dwa oryginalne przyciski obok siebie, dane kontaktowe w jednej linii */
+.mg-hero .wp-block-buttons{display:flex;flex-wrap:nowrap;gap:10px}
+.mg-hero .mg-btn{flex:1 1 0}
+.entry-content .mg-hero .mg-btn-jasny .wp-block-button__link{background:transparent!important;border:2px solid rgba(255,255,255,.85);color:#fff!important}
+.entry-content .mg-hero .mg-btn-jasny .wp-block-button__link:hover{background:rgba(255,255,255,.12)!important}
+.mg-hero .mg-lead{display:block;font-size:.95rem;line-height:1.5;color:#dbe5ee;margin:0 0 4px}
+.mg-ocena span+span:before{content:"\00B7";margin-right:10px;color:#8fa6bb}
+.mg-ocena a{font-weight:400}
+@media (max-width:760px){.mg-hero .mg-lead{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}.mg-ocena span:first-child{display:none}.mg-ocena span:nth-child(2):before{content:none}}
+@media (min-width:761px){.mg-hero .mg-btn{flex:0 0 auto}.mg-hero .mg-lead{font-size:1.08rem;max-width:40em}}
+
+/* "Dlaczego czarter jachtu na Mazurach z Marigo - 8 korzysci" + formularz */
+.mg-korzysci-kol.wp-block-columns{gap:28px 56px;margin:0;align-items:flex-start}
+.mg-korzysci-kol>.wp-block-column:first-child{flex:1 1 60%}
+.mg-korzysci-kol>.wp-block-column:last-child{flex:1 1 40%}
+.mg-korzysci-sek h2{font-size:clamp(1.45rem,1.1rem + 1.3vw,2rem);margin:0 0 .6em;max-width:28em}
+.mg-korzysci-sek ul{margin:0;padding-left:1.2em}
+.mg-korzysci-sek li{margin:0 0 .7em;line-height:1.55}
+.mg-korzysci-sek .mg-pytanie{background:var(--mg-sand);border-radius:var(--mg-r);padding:20px}
+.mg-korzysci-sek .mg-pytanie h3{font-size:1.25rem;margin:0 0 .6em}
+@media (max-width:781px){.mg-korzysci-kol.wp-block-columns{flex-wrap:wrap!important}.mg-korzysci-kol>.wp-block-column{flex-basis:100%!important}}
+
+/* popularne lokalizacje: kafelki ze zdjeciem i nazwa (cala karta klikalna) */
+.mg-lok{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (min-width:700px){.mg-lok{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}}
+@media (min-width:1100px){.mg-lok{grid-template-columns:repeat(6,minmax(0,1fr))}}
+.mg-lok-kafel{position:relative;isolation:isolate;aspect-ratio:3/4;border-radius:14px;overflow:hidden;background:var(--mg-navy);margin:0!important;box-shadow:0 6px 18px rgba(11,32,53,.12);transition:transform .22s ease,box-shadow .22s ease}
+.mg-lok-kafel:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(11,32,53,.2)}
+.mg-lok-kafel .mg-lok-fot{position:absolute;inset:0;margin:0!important}
+.mg-lok-kafel .mg-lok-fot a,.mg-lok-kafel .mg-lok-fot img{display:block;width:100%!important;height:100%!important;object-fit:cover;border-radius:0!important}
+.mg-lok-kafel:after{content:"";position:absolute;left:0;right:0;bottom:0;height:45%;background:linear-gradient(to top,rgba(11,32,53,.7),rgba(11,32,53,0));pointer-events:none}
+.entry-content .mg-lok-nazwa{position:absolute;left:12px;bottom:12px;z-index:2;margin:0!important;max-width:calc(100% - 24px)}
+.entry-content .mg-lok-nazwa a{display:inline-block;padding:6px 12px;border-radius:999px;background:rgba(11,32,53,.62);border:1px solid rgba(255,255,255,.35);color:#fff!important;font-weight:600;font-size:.95rem;line-height:1.2;text-decoration:none;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+@media (prefers-reduced-motion:reduce){.mg-lok-kafel{transition:none}.mg-lok-kafel:hover{transform:none}}
+
+/* FAQ i rozwijane teksty: tresc wewnatrz (akapity, listy, naglowki, tekst preformatowany) */
+.mg-faq,.mg-faq details>*:not(summary){max-width:880px}
+.mg-faq details :is(ul,ol){margin:0 0 16px;padding-left:1.3em}
+.mg-faq details li{margin:0 0 .45em}
+.mg-faq details :is(h3,h4){font-size:1.1rem;margin:4px 0 .5em}
+.mg-faq details pre{white-space:pre-wrap;font-family:var(--mg-font);font-size:1rem;line-height:1.65;background:none;border:0;padding:0;margin:0 0 16px;color:var(--mg-txt);overflow:visible}
+.mg-faq details figure{margin:0 0 16px}
+.mg-faq details img{border-radius:var(--mg-r);height:auto}
+.mg-faq details .wp-block-buttons{margin:0 0 16px}
+.mg-faq-seo{margin-top:28px}
+
+/* /cennik/ i zaglowki: tabele cen widoczne; na telefonie przewijane w ramce, pierwsza kolumna przyklejona */
+.entry-content figure.wp-block-table.mg-cennik-tabela{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--mg-line);border-radius:var(--mg-r);margin:0 0 .6em;background:#fff}
+.mg-cennik-tabela table{border-collapse:separate;border-spacing:0;width:100%;min-width:max-content;font-size:.95rem;line-height:1.35;margin:0;border:0}
+.mg-cennik-tabela :is(td,th){padding:9px 14px;border:0;border-bottom:1px solid var(--mg-line-2);text-align:center;white-space:nowrap;color:var(--mg-ink);background:#fff;font-weight:400}
+.mg-cennik-tabela tr:last-child>*{border-bottom:0}
+.mg-cennik-tabela tbody tr:nth-child(even)>*{background:#faf8f3}
+.mg-cennik-tabela thead tr>*,.mg-cennik-tabela table:not(:has(thead)) tbody tr:first-child>*{background:var(--mg-navy)!important;color:#fff!important;font-weight:600;white-space:normal;min-width:6.5em}
+.mg-cennik-tabela thead a,.mg-cennik-tabela table:not(:has(thead)) tbody tr:first-child a{color:#fff!important}
+.mg-cennik-tabela tr>:first-child{position:sticky;left:0;z-index:1;text-align:left;font-weight:600;box-shadow:1px 0 0 var(--mg-line)}
+.mg-cennik-tabela strong{font-weight:600}
+.entry-content .mg-podpis{font-size:.86rem!important;color:var(--mg-mut)!important;margin:0 0 1.6em!important;max-width:var(--mg-tekst)}
+@media (max-width:767px){
+  .mg-cennik-tabela table{font-size:.9rem}
+  .mg-cennik-tabela :is(td,th){padding:8px 10px}
+  .mg-cennik-tabela tr>:first-child{min-width:7.2em;max-width:8.5em;white-space:normal}
+}
+
+/* last minute: brak aktualnych ofert */
+.mg-lm-brak{background:var(--mg-sand);border-radius:var(--mg-r);padding:16px 18px;margin:0 0 1.6em!important;max-width:var(--mg-tekst)}
+
+/* etykieta zapisana jako przycisk bez linku (np. "WYPOSAZENIE JACHTU ...") */
+.entry-content p.mg-etykieta{font-size:1rem!important;letter-spacing:.03em;color:var(--mg-ink)!important;margin:1.8em 0 .5em!important;max-width:var(--mg-tekst)}
+.entry-content p.mg-etykieta strong{font-weight:600}
+
+/* strony jachtow: opis nad galeria (oryginalny tekst SEO, edytowalny blok; pusty blok sie nie wyswietla) */
+.mg-jintro{margin:clamp(18px,2.6vw,28px) 0 clamp(16px,2.4vw,26px)!important}
+.mg-jintro:not(:has(:is(h2,p):not(:empty))){display:none}
+.mg-jintro :is(h2,p){font-size:1.04rem!important;font-weight:400!important;line-height:1.6!important;color:#24384c!important;letter-spacing:normal!important;text-transform:none!important;margin:0 0 .6em!important;max-width:60rem;background:none!important;padding:0!important}
+.mg-jintro :is(h2,p) strong{font-weight:600}
+@media (max-width:781px){.mg-jintro{margin:14px 0!important}.mg-jintro :is(h2,p){font-size:.98rem!important}}
+/* panel jachtu: oryginalna lista danych (wszystkie pozycje, takze na telefonie) */
+.mg-fakty.mg-fakty-oryg li,.mg-fakty.mg-fakty-oryg li:nth-child(n+5){display:block!important}
+.mg-fakty.mg-fakty-oryg li strong{display:inline;font-size:inherit;color:inherit;font-weight:600}
+.mg-jpanel .mg-korzysci{margin:6px 0 14px}
+.mg-jpanel .mg-korzysci li{padding:7px 0 7px 22px;font-size:.92rem}
+.mg-jpanel .mg-korzysci li:before{top:15px;width:7px;height:7px}
+/* oryginalna tresc strony jachtu pod szablonem */
+.marigo-opis{padding:clamp(32px,5vw,56px) 0;border-top:1px solid var(--mg-line);margin:0!important}
+.marigo-opis>*:first-child{margin-top:0!important}
+/* podobne jachty */
+.mg-podobne .mg-flota{margin-bottom:0}
+@media (min-width:900px){.mg-flota-podobne{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* /jachty/antila-33-mazury/: 4 jednostki (miniatura, cechy, przycisk) */
+.mg-a33-karty{display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
+@media (min-width:760px){.mg-a33-karty{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.mg-a33-karta{background:#fff;border:1px solid var(--mg-line);border-radius:var(--mg-r);overflow:hidden;display:flex;flex-direction:column;margin:0!important;padding:0 0 18px}
+.mg-a33-karta>*{margin-left:18px!important;margin-right:18px!important}
+.mg-a33-karta>figure.wp-block-image{margin:0 0 14px!important;aspect-ratio:16/9;overflow:hidden;background:var(--mg-sand)}
+.mg-a33-karta>figure.wp-block-image a,.mg-a33-karta>figure.wp-block-image img{display:block;width:100%!important;height:100%!important;object-fit:cover;border-radius:0!important}
+.entry-content .mg-a33-karta h2{font-size:1.35rem!important;margin:0 0 .4em!important}
+.mg-a33-karta ul{margin:0 0 14px;padding-left:1.2em;font-size:.97rem}
+.mg-a33-karta li{margin:0 0 .35em}
+.mg-a33-karta .wp-block-buttons{margin-top:auto!important}
+/* poprawki po przegladzie zrzutow v8 */
+.mg-hero .mg-lead a{color:#fff!important;text-decoration:underline;text-decoration-color:rgba(255,255,255,.5)}
+.entry-content figure.wp-block-image img[width]{width:auto;max-width:100%;height:auto}
+.entry-content details.wp-block-details:not(.mg-faq details){border-bottom:1px solid var(--mg-line);max-width:880px;margin:0!important}
+.entry-content details.wp-block-details:not(.mg-faq details)>summary{cursor:pointer;padding:14px 0;font-weight:600;color:var(--mg-ink)}
+.entry-content details.wp-block-details:not(.mg-faq details)>*:not(summary){max-width:var(--mg-tekst)}
+.mg-a33-faq+.marigo-opis,.mg-jsek+.marigo-opis{border-top:0;padding-top:8px}
+/* telefon: opis nad galeria skrocony do 4 linii (caly tekst jest w kodzie strony), "Czytaj dalej" rozwija */
+@media (max-width:781px){
+  .mg-jintro.mg-jintro-js:not(.mg-jintro-otw){max-height:6.6em;overflow:hidden;position:relative}
+  .mg-jintro.mg-jintro-js:not(.mg-jintro-otw):after{content:"";position:absolute;left:0;right:0;bottom:0;height:2.2em;background:linear-gradient(rgba(255,255,255,0),#fff)}
+}
+.mg-jintro-btn{display:none;background:none;border:0;padding:0;margin:-6px 0 14px;color:var(--mg-blue);font:inherit;font-size:.95rem;font-weight:600;text-decoration:underline;cursor:pointer}
+@media (max-width:781px){.mg-jintro-js+.mg-jintro-btn{display:inline-block}}
