@@ -775,3 +775,115 @@ body.mg-zwykla .entry-content .wp-block-columns:not([class*="mg-"])>.wp-block-co
 .entry-content .wp-block-table.mgx-przewin{-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 44px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 44px),transparent)}
 .entry-content .wp-block-table.mgx-przewin.mgx-koniec{-webkit-mask-image:none;mask-image:none}
 @media (min-width:782px){.mgx-przesun{display:none}}
+
+/* ==========================================================================
+   18. Cennik: przelacznik jachtu (functions.php: marigo_cennik_przelacznik_html)
+   ========================================================================== */
+.mg-cp{margin:0 0 2rem}
+.mg-cp-wybor{display:none}
+.mg-cp-js .mg-cp-wybor{display:block;margin:0 0 18px}
+.mg-cp-grupa{margin:0 0 12px}
+.mg-cp-gtyt{font-size:.88rem!important;font-weight:600!important;color:var(--mg-mut)!important;margin:0 0 6px!important}
+.mg-cp-pigulki{display:flex;flex-wrap:wrap;gap:8px;padding:2px 0 4px}
+.mg-cp-pigulki::-webkit-scrollbar{display:none}
+.mg-cp-pig{flex:0 0 auto;min-height:42px;padding:8px 14px;border:1px solid var(--mg-line);border-radius:999px;background:#fff;color:var(--mg-ink);font:inherit;font-size:.95rem;font-weight:600;line-height:1.2;cursor:pointer;white-space:nowrap}
+.mg-cp-pig:hover{border-color:var(--mg-ink);background:#fff;color:var(--mg-ink)}
+.mg-cp-pig.mg-cp-akt,.mg-cp-pig.mg-cp-akt:hover{background:var(--mg-navy);border-color:var(--mg-navy);color:#fff}
+.mg-cp-panel{background:#fff;border:1px solid var(--mg-line);border-radius:var(--mg-r);padding:16px 16px 6px;margin:0 0 16px}
+.mg-cp-js .mg-cp-panel{margin:0}
+.entry-content .mg-cp-nazwa{font-size:1.25rem!important;margin:0 0 4px!important}
+.mg-cp-panel .mg-cennik-tab{border:0;margin:6px 0 8px}
+.mg-cp-panel .mg-cennik-tab th:first-child,.mg-cp-panel .mg-cennik-tab td:first-child{padding-left:0}
+.mg-cp-panel .mg-cennik-tab th:last-child,.mg-cp-panel .mg-cennik-tab td:last-child{padding-right:4px}
+.mg-cp-panel .mg-cennik-tab th{background:none;border-bottom:1px solid var(--mg-line)}
+.mg-cp-linki{display:flex;flex-wrap:wrap;gap:6px 18px;margin:4px 0 10px!important}
+.entry-content .mg-cp-link{font-weight:600}
+@media (min-width:900px){body.mg-zwykla .entry-content .mg-cp{max-width:none}}
+
+/* bloki informacji (rabaty, doplaty, zasady, rezerwacja) */
+.mg-info-karty{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;margin:0 0 2rem}
+@media (min-width:700px){.mg-info-karty{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.mg-info-karta{background:var(--mg-sand);border-radius:var(--mg-r);padding:16px 18px}
+.entry-content .mg-info-karta h3{font-size:1.1rem!important;margin:0 0 8px!important}
+.mg-info-karta ul{margin:0!important;padding-left:1.15em!important}
+.mg-info-karta li{font-size:.97rem!important;margin:0 0 .35em!important}
+.mg-info-karta p{font-size:.97rem!important;margin:0 0 .5em!important}
+
+/* ==========================================================================
+   19. Last minute: karty ofert
+   ========================================================================== */
+.mg-lm{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;margin:0 0 2rem}
+@media (min-width:640px){.mg-lm{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:900px){body.mg-zwykla .entry-content .mg-lm{grid-template-columns:repeat(3,minmax(0,1fr));width:min(var(--mg-wrap),100vw - 48px);position:relative;left:50%;transform:translateX(-50%)}}
+.mg-lm-karta{background:#fff;border:1px solid var(--mg-line);border-radius:var(--mg-r);padding:16px;display:flex;flex-direction:column;gap:4px}
+.entry-content .mg-lm-jacht{font-size:1.15rem!important;margin:0!important}
+.entry-content .mg-lm-jacht a{color:var(--mg-ink);text-decoration:none}
+.mg-lm-termin{margin:0!important;color:var(--mg-txt)}
+.mg-lm-termin span{color:var(--mg-mut)}
+.mg-lm-cena{margin:4px 0 8px!important;color:var(--mg-ink)}
+.mg-lm-cena s{color:var(--mg-mut);font-size:.95rem;margin-right:4px}
+.mg-lm-cena strong{font-size:1.35rem;color:var(--mg-red)}
+.mg-lm-cena span{font-size:.88rem;color:var(--mg-mut)}
+.mg-lm-przyciski{display:flex;gap:8px;margin:auto 0 0!important}
+.entry-content .mg-lm-przyciski a{flex:1;display:inline-flex;align-items:center;justify-content:center;min-height:44px;border-radius:8px;font-weight:600;text-decoration:none;font-size:.95rem}
+.entry-content .mg-lm-tel{background:var(--mg-red);color:#fff}
+.entry-content .mg-lm-tel:hover{background:var(--mg-red-d);color:#fff}
+.entry-content .mg-lm-mail{border:1px solid var(--mg-ink);color:var(--mg-ink)}
+
+/* ==========================================================================
+   20. Wpisy: udostepnianie zamiast widgetow wtyczki, komentarze
+   ========================================================================== */
+.entry-content [class*="sfsi"],.sfsi_outr_div,#sfsi_floater,.sfsi_widget,.sfsi_Sicons,.sfsiplus_norm_row{display:none!important}
+.mg-udostepnij{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:2rem 0 0!important;padding-top:16px;border-top:1px solid var(--mg-line);font-size:.95rem!important;color:var(--mg-mut)!important}
+.mg-udostepnij span{color:var(--mg-line)}
+.mg-kopiuj{background:none;border:0;padding:0;font:inherit;color:var(--mg-blue);text-decoration:underline;text-decoration-color:rgba(27,95,168,.38);text-underline-offset:.18em;cursor:pointer}
+.mg-kopiuj:hover{color:var(--mg-red-d);background:none}
+.comments-area{max-width:var(--mg-tekst);margin:0 auto!important;padding:0 16px 48px!important;background:transparent!important}
+.comments-area .comments-title{font-size:1.3rem;margin:0 0 1rem}
+.comments-area .comment-body{padding:12px 0;border-bottom:1px solid var(--mg-line-2)}
+.comments-area .comment-meta{font-size:.88rem;color:var(--mg-mut)}
+.comments-area .reply,.comments-area .comment-respond,.comments-area .no-comments{display:none}
+
+/* ==========================================================================
+   21. Komunikaty formularzy (Contact Form 7)
+   ========================================================================== */
+.wpcf7 .wpcf7-response-output{margin:12px 0 0!important;padding:10px 14px!important;border-radius:8px;border:1px solid var(--mg-line)!important;font-size:.95rem;line-height:1.45}
+.wpcf7 form.sent .wpcf7-response-output,.wpcf7 .mg-form-ok{background:#edf6ee;border-color:#a8cdaa!important;color:#1d4a22}
+.wpcf7 form.invalid .wpcf7-response-output,.wpcf7 form.failed .wpcf7-response-output,.wpcf7 form.spam .wpcf7-response-output,.wpcf7 .mg-form-blad{background:#fcefed;border-color:#e3a59e!important;color:#7d1f16}
+.wpcf7 .wpcf7-not-valid-tip,.wpcf7 .mg-pole-blad{display:block;color:var(--mg-red-d);font-size:.88rem;margin:4px 0 0}
+.wpcf7 [aria-invalid="true"]{border-color:var(--mg-red)!important}
+.wpcf7 input[type=submit]:disabled{opacity:.7;cursor:wait}
+
+/* sekcja "O jachcie" na stronach jachtow (bloki z paczki, klasa mg-ojachcie) */
+.mg-ojachcie>*,.mg-media>*{max-width:46rem}
+.mg-ojachcie h3,.mg-media h3{font-size:1.15rem;margin:1.6rem 0 .5rem}
+.mg-ojachcie p{margin:0 0 .95em;line-height:1.65}
+.mg-ojachcie ul{padding-left:1.35em;margin:0 0 1.15em}
+.mg-ojachcie li{margin:0 0 .45em;padding-left:.2em;line-height:1.6}
+.mg-ojachcie li::marker{color:var(--mg-red)}
+.mg-ojachcie .mg-faq{margin-top:.4rem}
+.mg-media figure{margin:0 0 1.2em}
+.mg-media img{border-radius:var(--mg-r);height:auto}
+
+/* 22. telefon: szerokie tabele we wpisach jako pary etykieta-wartosc albo karty (klasy dodaje skrypt tylko gdy tabela sie nie miesci) */
+@media (max-width:767px){
+.entry-content .wp-block-table.mgx-pary table,.entry-content .wp-block-table.mgx-karty table{min-width:0!important;width:100%!important;table-layout:auto}
+.entry-content .wp-block-table.mgx-pary tbody,.entry-content .wp-block-table.mgx-pary tr{display:block;width:100%}
+.entry-content .wp-block-table.mgx-pary tr{display:grid;grid-template-columns:minmax(0,auto) minmax(0,1fr)}
+.entry-content .wp-block-table.mgx-pary td{white-space:normal!important;border:0;border-bottom:1px solid #e3e7ec;padding:.5rem .6rem;overflow-wrap:anywhere}
+.entry-content .wp-block-table.mgx-pary td:nth-child(odd){font-weight:600}
+.entry-content .wp-block-table.mgx-karty table,.entry-content .wp-block-table.mgx-karty tbody,.entry-content .wp-block-table.mgx-karty tr,.entry-content .wp-block-table.mgx-karty td{display:block;width:100%}
+.entry-content .wp-block-table.mgx-karty thead,.entry-content .wp-block-table.mgx-karty tr.mgx-nagl{display:none}
+.entry-content .wp-block-table.mgx-karty tr{border:1px solid #e3e7ec;border-radius:8px;margin:0 0 .75rem;padding:.35rem .75rem;background:#fff}
+.entry-content .wp-block-table.mgx-karty td{white-space:normal!important;border:0;padding:.3rem 0;overflow-wrap:anywhere;text-align:left}
+.entry-content .wp-block-table.mgx-karty td[data-label]::before{content:attr(data-label);display:block;font-size:.8rem;font-weight:600;color:#5b6676}
+.entry-content .wp-block-table.mgx-karty td:empty{display:none}
+}
+@media (max-width:767px){.entry-content .wp-block-table td:first-child:nth-last-child(2),.entry-content .wp-block-table td:nth-child(2):last-child{overflow-wrap:anywhere}}
+@media (max-width:767px){.entry-content .wp-block-table.mgx-karty tr,.entry-content .wp-block-table.mgx-karty tr:nth-child(odd){background:#fff!important}.entry-content .wp-block-table.mgx-karty td{background:transparent!important;border:0!important;border-bottom:1px solid #eef1f4!important}.entry-content .wp-block-table.mgx-karty td:last-child{border-bottom:0!important}.entry-content .wp-block-table.mgx-karty table{border:0!important}}
+/* listy w starych wpisach ustawione na "mały" rozmiar - czytelny rozmiar treści */
+.entry-content ul.has-small-font-size,.entry-content ol.has-small-font-size,.entry-content li.has-small-font-size{font-size:inherit!important}
+.mg-udostepnij a,.mg-udostepnij button.mg-kopiuj{font-family:inherit!important;font-size:inherit!important;font-weight:400!important;line-height:inherit!important;color:var(--mg-blue)!important;background:none!important;padding:0!important;min-height:0!important;text-transform:none!important;letter-spacing:0!important}
+/* numery telefonow w tabelach nie lamia sie w srodku */
+.entry-content .wp-block-table td.mgx-nr,.entry-content .wp-block-table td.mgx-nr *{white-space:nowrap!important}
+.entry-content .wp-block-table table:has(td.mgx-nr){table-layout:auto!important}
