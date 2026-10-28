@@ -491,7 +491,9 @@ body.single .entry-meta a{color:var(--mg-mut)}
 .entry-content p.mgx-podtytul:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){font-size:1.12em!important;line-height:1.35!important;color:var(--mg-ink)!important;margin:1.7em 0 .45em!important}
 .entry-content p.mgx-podtytul :is(strong,b){font-weight:600}
 /* "etykieta" nad naglowkiem w GenerateBlocks: bez rozstrzelenia, jako naglowek */
-.entry-content p.mgx-nad:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){display:block!important;font-size:clamp(1.38rem,1.2rem + .75vw,1.72rem)!important;font-weight:600!important;line-height:1.25!important;color:var(--mg-ink)!important;text-transform:lowercase!important;letter-spacing:-.005em!important;margin:2rem 0 .6rem!important;max-width:var(--mg-tekst)}
+.entry-content p.mgx-nad:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){display:block!important;font-size:clamp(1.38rem,1.2rem + .75vw,1.72rem)!important;font-weight:600!important;line-height:1.25!important;color:var(--mg-ink)!important;text-transform:none!important;letter-spacing:-.005em!important;margin:2rem 0 .6rem!important;max-width:var(--mg-tekst)}
+/* etykieta zapisana WERSALIKAMI (functions.php: mgx-nad-wers) -> zwykle male litery z wielka pierwsza */
+.entry-content p.mgx-nad.mgx-nad-wers:not([class*="mg-"]){text-transform:lowercase!important}
 .entry-content p.mgx-nad+:is(h2,h3):not(.mgx-dlugi):not([class*="mg-"]):not(.entry-content [class*="mg-"] *){margin-top:0!important;font-size:1.16rem!important}
 .entry-content p.mgx-nad:not([class*="mg-"]):not(.entry-content [class*="mg-"] *)::first-letter{text-transform:uppercase}
 .entry-content .mgx-ukryj:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){display:none!important}
@@ -716,7 +718,7 @@ iframe[id*="yacht-wdg"]:not(.yacht-wdg-fullscreen){min-height:0!important}
 /* cytaty: czcionka bez kursywy (brak pliku kursywy - sztuczna kursywa wyglada slabo) */
 .entry-content blockquote,.entry-content blockquote p,.mg-opinie .wp-block-quote p{font-style:normal!important}
 /* przycisk "Wyslij": bialy napis takze po najechaniu i w fokusie (GP ustawia tam ciemny kolor) */
-.wpcf7 input.wpcf7-submit,.wpcf7 input.wpcf7-submit:hover,.wpcf7 input.wpcf7-submit:focus,.wpcf7 input.wpcf7-submit:active{color:#fff!important}
+.wpcf7 input.wpcf7-submit,.wpcf7 input.wpcf7-submit:hover,.wpcf7 input.wpcf7-submit:focus,.wpcf7 input.wpcf7-submit:active{color:#fff!important;-webkit-text-fill-color:#fff!important}
 /* stronicowanie bloga i kategorii */
 body:is(.blog,.archive,.search) .paging-navigation .nav-links{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 body:is(.blog,.archive,.search) .paging-navigation .page-numbers{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:0 14px;border:1px solid var(--mg-line);border-radius:8px;background:#fff;color:var(--mg-ink);text-decoration:none;font-weight:600}
@@ -754,3 +756,22 @@ body.mg-zwykla .entry-content .wp-block-columns:not([class*="mg-"])>.wp-block-co
 .entry-content table[style*="width"]{width:auto!important;max-width:100%!important;height:auto!important;display:block;overflow-x:auto}
 /* telefon: naglowek podstron bez zdjecia w tle (pod granatowym przyciemnieniem bylo prawie niewidoczne, a wazylo ok. 160 KB) */
 @media (max-width:760px){.page-hero{background-image:none!important;background-color:var(--mg-navy)!important}.page-hero:before{background:linear-gradient(100deg,var(--mg-navy-3) 0%,var(--mg-navy) 100%)}}
+
+/* ==========================================================================
+   17. Tabele na telefonie
+   - do 5 kolumn (np. last minute): mieszcza sie w szerokosci ekranu, mniejsza czcionka, daty lamane
+   - 6 i wiecej kolumn (duze cenniki): przewijane palcem, napis "Przesun tabele w bok" i zanikanie przy prawej krawedzi
+   ========================================================================== */
+@media (max-width:781px){
+  .entry-content table:not([class*="mg-"]):has(td:nth-child(3)):not(:has(td:nth-child(6))){min-width:0!important;width:100%!important;table-layout:auto;font-size:.8rem!important}
+  .entry-content table:not([class*="mg-"]):has(td:nth-child(3)):not(:has(td:nth-child(6))) :is(td,th){white-space:normal!important;padding:7px 5px!important;word-break:normal;overflow-wrap:normal;hyphens:manual}
+  .entry-content table:not([class*="mg-"]):has(td:nth-child(3)):not(:has(td:nth-child(6))) tr>:first-child{min-width:0!important;max-width:none!important;position:static!important;box-shadow:none!important}
+  .entry-content table:not([class*="mg-"]):has(td:nth-child(3)):not(:has(td:nth-child(6))) :is(td,th):first-child{padding-left:8px!important}
+  .entry-content table:not([class*="mg-"]):has(td:nth-child(3)):not(:has(td:nth-child(6))) :is(td,th):last-child{padding-right:8px!important}
+}
+.mgx-przesun{display:flex;align-items:center;gap:6px;margin:0 0 6px!important;font-size:.84rem!important;color:var(--mg-mut)!important;transition:opacity .3s ease}
+.mgx-przesun:after{content:"\2192";font-weight:600}
+.mgx-przesun.mgx-ukryte{opacity:0}
+.entry-content .wp-block-table.mgx-przewin{-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 44px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 44px),transparent)}
+.entry-content .wp-block-table.mgx-przewin.mgx-koniec{-webkit-mask-image:none;mask-image:none}
+@media (min-width:782px){.mgx-przesun{display:none}}
