@@ -888,33 +888,128 @@ body.mg-zwykla .entry-content .wp-block-columns:not([class*="mg-"])>.wp-block-co
 .entry-content .wp-block-table td.mgx-nr,.entry-content .wp-block-table td.mgx-nr *{white-space:nowrap!important}
 .entry-content .wp-block-table table:has(td.mgx-nr){table-layout:auto!important}
 
-/* === 28.10 cennik jachtu jako wykres sezonow (zamiast tabeli Termin/Doba/7 dob) === */
-.mg-sez{--t1:#2a9d8f;--t2:#e9a23b;--t3:var(--mg-red);background:#fff;border:1px solid var(--mg-line);border-radius:14px;padding:16px 16px 12px;margin:0 0 12px}
-.entry-content .mg-sez p{margin:0!important}
-.entry-content .mg-sez-gora{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px!important}
-.mg-sez-gora span{background:var(--mg-sand);border-radius:999px;padding:6px 12px;font-size:.9rem;color:var(--mg-txt);line-height:1.2}
-.mg-sez-gora b{color:var(--mg-ink);font-size:1.05rem}
-.mg-sez-gora span:first-child{background:var(--mg-navy);color:#fff}
-.mg-sez-gora span:first-child b{color:#fff}
-.entry-content ol.mg-sez-lista{list-style:none!important;margin:0!important;padding:0!important}
-.entry-content ol.mg-sez-lista li{display:grid;grid-template-columns:7.2em minmax(40px,1fr) auto;align-items:center;gap:12px;margin:0!important;padding:8px 0;border-top:1px solid var(--mg-line-2);line-height:1.2}
-.entry-content ol.mg-sez-lista li:first-child{border-top:0}
-.entry-content ol.mg-sez-lista li::before{content:none!important;display:none!important}
-.mg-sez-d{font-size:.92rem;color:var(--mg-txt);white-space:nowrap}
-.mg-sez-bar{display:block;height:10px;border-radius:99px;background:#efeae1;overflow:hidden}
-.mg-sez-bar i{display:block;height:100%;border-radius:99px;background:var(--t2)}
-.mg-t1 .mg-sez-bar i{background:var(--t1)}
-.mg-t3 .mg-sez-bar i{background:var(--t3)}
-.mg-sez-c{text-align:right;white-space:nowrap}
-.mg-sez-c b{display:block;font-size:1.02rem;color:var(--mg-ink)}
-.mg-t3 .mg-sez-c b{color:var(--mg-red-d)}
-.mg-sez-c small{display:block;font-size:.76rem;color:var(--mg-mut);margin-top:1px}
-.entry-content .mg-sez-leg{display:flex;flex-wrap:wrap;gap:4px 14px;margin:10px 0 0!important;font-size:.8rem;color:var(--mg-mut)}
-.mg-sez-leg span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px;background:var(--t2)}
-.mg-sez-leg .mg-t1::before{background:var(--t1)}
-.mg-sez-leg .mg-t3::before{background:var(--t3)}
-.entry-content .mg-sez-dod{display:flex;flex-wrap:wrap;gap:6px 8px;margin:12px 0 0!important;padding-top:12px;border-top:1px solid var(--mg-line-2)}
-.mg-sez-dod span{font-size:.86rem;color:var(--mg-txt);border:1px solid var(--mg-line);border-radius:999px;padding:4px 10px}
-.mg-sez-dod b{color:var(--mg-ink)}
-.mg-cp-panel .mg-sez{border:0;padding:4px 0 6px;margin:6px 0 8px}
-@media (max-width:380px){.entry-content ol.mg-sez-lista li{grid-template-columns:6.6em minmax(30px,1fr) auto;gap:9px}.mg-sez-d{font-size:.86rem}}
+/* === v5: cennik jachtu - polecane terminy, pasek sezonu, ceny pogrupowane wg ceny (functions-dodatek.php 5a) === */
+.mg-cj{--p1:#d4e6f5;--p2:#9fc4e7;--p3:#5f97cf;--p4:#2e67a6;--p5:#163d6b;background:#fff;border:1px solid var(--mg-line);border-radius:16px;padding:18px 16px 14px;margin:0 0 14px}
+.entry-content .mg-cj p{margin:0!important}
+.entry-content .mg-cj ul{list-style:none!important;margin:0!important;padding:0!important}
+.entry-content .mg-cj li{margin:0!important}
+.entry-content .mg-cj li::before{content:none!important;display:none!important}
+.entry-content .mg-cj-pig{display:flex;flex-wrap:wrap;gap:8px}
+.mg-cj-pig span{background:var(--mg-sand);border-radius:999px;padding:7px 14px;font-size:.92rem;line-height:1.2;color:var(--mg-txt)}
+.mg-cj-pig b{font-size:1.1rem;color:var(--mg-ink)}
+.mg-cj-pig .mg-cj-pig-g{background:var(--mg-navy);color:#fff}
+.mg-cj-pig .mg-cj-pig-g b{color:#fff}
+.entry-content h4.mg-cj-h{font-size:1rem;font-weight:600;color:var(--mg-ink);margin:20px 0 10px!important;line-height:1.3}
+.entry-content ul.mg-cj-karty{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.mg-cj-karty li{display:flex;flex-direction:column;gap:2px;background:#f6f8fb;border-radius:12px;padding:12px 12px 11px;border-top:4px solid var(--p3);line-height:1.25}
+.mg-cj-kn{font-weight:600;color:var(--mg-ink);font-size:.98rem}
+.mg-cj-kd{font-size:.82rem;color:var(--mg-mut)}
+.mg-cj-ks{font-size:1.2rem;color:var(--mg-ink);margin-top:6px}
+.mg-cj-kc{font-size:.82rem;color:var(--mg-txt)}
+.mg-cj-karty .mg-p1{border-top-color:var(--p1)}.mg-cj-karty .mg-p2{border-top-color:var(--p2)}.mg-cj-karty .mg-p4{border-top-color:var(--p4)}.mg-cj-karty .mg-p5{border-top-color:var(--p5)}
+.mg-cj-pas{position:relative;height:26px;border-radius:8px;background:#eef1f5;overflow:hidden}
+.mg-cj-pas i{position:absolute;top:0;bottom:0;box-shadow:inset -1px 0 0 #fff}
+.mg-cj .mg-p1 .mg-cj-dot,.mg-cj-pas i.mg-p1{background:var(--p1)}
+.mg-cj .mg-p2 .mg-cj-dot,.mg-cj-pas i.mg-p2{background:var(--p2)}
+.mg-cj .mg-p3 .mg-cj-dot,.mg-cj-pas i.mg-p3{background:var(--p3)}
+.mg-cj .mg-p4 .mg-cj-dot,.mg-cj-pas i.mg-p4{background:var(--p4)}
+.mg-cj .mg-p5 .mg-cj-dot,.mg-cj-pas i.mg-p5{background:var(--p5)}
+.mg-cj-mies{display:flex;margin-top:4px}
+.mg-cj-mies span{font-size:.74rem;color:var(--mg-mut);border-left:1px solid var(--mg-line);padding-left:4px;line-height:1.3;white-space:nowrap;overflow:hidden}
+.entry-content .mg-cj-skala{display:flex;align-items:center;gap:8px;margin-top:8px!important;font-size:.78rem;color:var(--mg-mut)}
+.mg-cj-skala i{flex:0 1 120px;height:8px;border-radius:99px;background:linear-gradient(90deg,var(--p1),var(--p3),var(--p5))}
+.mg-cj-ceny li{display:grid;grid-template-columns:12px 1fr;column-gap:10px;padding:10px 0;border-top:1px solid var(--mg-line-2)}
+.mg-cj-ceny li:first-child{border-top:0;padding-top:2px}
+.mg-cj-ceny li::after{content:none}
+.mg-cj-ceny li>*{grid-column:2}
+.mg-cj-ceny li{position:relative}
+.mg-cj-ceny li .mg-cj-c::before{content:"";position:absolute;left:0;top:15px;width:12px;height:12px;border-radius:50%;background:var(--p3)}
+.mg-cj-ceny li:first-child .mg-cj-c::before{top:7px}
+.mg-cj-ceny .mg-p1 .mg-cj-c::before{background:var(--p1)}.mg-cj-ceny .mg-p2 .mg-cj-c::before{background:var(--p2)}.mg-cj-ceny .mg-p4 .mg-cj-c::before{background:var(--p4)}.mg-cj-ceny .mg-p5 .mg-cj-c::before{background:var(--p5)}
+.mg-cj-c{line-height:1.3;color:var(--mg-txt);font-size:.92rem}
+.mg-cj-c b{font-size:1.06rem;color:var(--mg-ink)}
+.mg-cj-c span{color:var(--mg-mut);margin-left:6px}
+.mg-cj-c span::before{content:"· ";}
+.entry-content .mg-cj-t{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px!important}
+.mg-cj-t span{font-size:.84rem;background:#f1f4f8;border-radius:999px;padding:3px 10px;color:var(--mg-txt);white-space:nowrap;line-height:1.4}
+.entry-content .mg-cj-dod{display:flex;flex-wrap:wrap;gap:6px 8px;margin-top:14px!important;padding-top:14px;border-top:1px solid var(--mg-line-2)}
+.mg-cj-dod span{font-size:.86rem;color:var(--mg-txt);border:1px solid var(--mg-line);border-radius:999px;padding:5px 12px}
+.mg-cj-dod b{color:var(--mg-ink)}
+.entry-content .mg-cj-zas{margin-top:10px!important;font-size:.84rem;color:var(--mg-mut);line-height:1.5}
+.mg-cp-panel .mg-cj{border:0;padding:4px 0 6px;margin:6px 0 8px}
+@media (max-width:360px){.entry-content ul.mg-cj-karty{gap:8px}.mg-cj-karty li{padding:10px}.mg-cj-ks{font-size:1.08rem}.mg-cj{padding:16px 12px 12px}}
+
+/* === v5: blog i wpisy === */
+/* karty listy: odstep tytulu, zastepnik zdjecia */
+body:is(.blog,.archive,.search) .site-main article .inside-article:not(:has(.post-image)) .entry-header{padding-top:18px}
+body:is(.blog,.archive,.search) .site-main article .post-image img{min-height:100%}
+.mg-zast{display:flex;flex-direction:column;justify-content:flex-end;gap:4px;width:100%;height:100%;padding:18px;background:linear-gradient(135deg,#123a63 0%,#1b5fa8 55%,#5f97cf 100%);color:#fff;position:relative;overflow:hidden}
+.mg-zast::before{content:"";position:absolute;right:-30px;top:-30px;width:150px;height:150px;border-radius:50%;border:22px solid rgba(255,255,255,.1)}
+.mg-zast::after{content:"";position:absolute;left:0;right:0;bottom:46px;height:22px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.14) 0 18px,transparent 18px 30px);opacity:.6}
+.mg-zast-k{font-size:1.1rem;font-weight:600;position:relative;z-index:1}
+.mg-zast-m{font-size:.8rem;opacity:.8;position:relative;z-index:1}
+/* ramka z banerem klientki */
+.entry-content .mg-cta-ramka{background:var(--mg-sand);border-radius:var(--mg-r);padding:14px;margin:1.6em 0!important;max-width:var(--mg-tekst)}
+.entry-content .mg-cta-ramka figure{margin:0!important;width:100%!important;max-width:100%!important;text-align:center}
+.entry-content .mg-cta-ramka figure a{display:block}
+.entry-content .mg-cta-ramka img{display:block;width:100%!important;max-width:100%!important;height:auto!important;border-radius:10px;margin:0 auto}
+.entry-content p.mg-cta-przyciski{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0!important}
+.entry-content .mg-cta-przyciski a{flex:1 1 150px;display:inline-flex;justify-content:center;align-items:center;min-height:44px;padding:8px 16px;border-radius:10px;font-weight:600;text-decoration:none!important;font-size:.98rem}
+.entry-content .mg-cta-przyciski a.mg-cta-tel{background:var(--mg-red);color:#fff!important}
+.entry-content .mg-cta-przyciski a.mg-cta-mail{background:#fff;color:var(--mg-ink)!important;border:1px solid var(--mg-line)}
+/* puste akapity i mniejsze odstepy separatorow */
+.entry-content p:empty,.entry-content p.wp-block-paragraph:not(:has(*)):not(:has(img)):empty{display:none}
+.entry-content hr:not([class*="mg-"]):not(.entry-content [class*="mg-"] *),.entry-content .wp-block-separator:not([class*="mg-"]):not(.entry-content [class*="mg-"] *){margin:clamp(18px,2.6vw,26px) 0!important}
+.entry-content :is(hr,.wp-block-separator)+:is(hr,.wp-block-separator){display:none}
+.entry-content :is(hr,.wp-block-separator):has(+ .mg-cta-ramka),.entry-content .mg-cta-ramka + :is(hr,.wp-block-separator){display:none}
+/* "Przeczytaj rowniez" (blok media + tekst) */
+.entry-content .wp-block-media-text:has(.mgx-podtytul){background:var(--mg-sand);border-radius:var(--mg-r);padding:14px;gap:14px;align-items:center;margin:1.6em 0!important}
+.entry-content .wp-block-media-text:has(.mgx-podtytul) .wp-block-media-text__content{padding:0!important}
+.entry-content .wp-block-media-text:has(.mgx-podtytul) img{border-radius:10px}
+.entry-content .wp-block-media-text:has(.mgx-podtytul) p.has-medium-font-size{font-size:.85rem!important;text-transform:uppercase;letter-spacing:.04em;color:var(--mg-mut)!important;margin:0 0 4px!important;font-weight:600}
+.entry-content .wp-block-media-text:has(.mgx-podtytul) p.mgx-podtytul a{font-size:1.08rem}
+.entry-content .wp-block-media-text:has(.mgx-podtytul) ul{margin:6px 0 0!important}
+/* krotkie tabele 2-kolumnowe (godziny, ceny): tabela takze na telefonie */
+.entry-content table.mgx-2k{width:100%!important;table-layout:fixed!important;border-collapse:collapse}
+.entry-content table.mgx-2k tr.mgx-n2>*{background:#eef2f6!important;color:var(--mg-ink)!important;font-weight:600;font-size:.88rem;line-height:1.3}
+.entry-content table.mgx-2k tr.mgx-n2 strong{font-weight:600}
+.entry-content table.mgx-2k td.mgx-nr{white-space:nowrap}
+@media (max-width:781px){
+  .entry-content table.mgx-2k tbody{display:table-row-group!important}
+  .entry-content table.mgx-2k tr{display:table-row!important;border:0!important}
+  .entry-content table.mgx-2k td{display:table-cell!important;width:50%!important;padding:9px 10px!important;border:1px solid var(--mg-line)!important;font-weight:400;vertical-align:top}
+  .entry-content table.mgx-2k td:first-child{font-weight:inherit;padding-bottom:9px!important}
+}
+/* v5 poprawki po przegladzie */
+.entry-content .mg-cta-ramka{background:#fff;border:1px solid var(--mg-line)}
+.entry-content .mg-cta-przyciski a.mg-cta-tel{flex:2 1 auto;white-space:nowrap}
+.entry-content .mg-cta-przyciski a.mg-cta-mail{flex:1 1 90px}
+.entry-content .wp-block-media-text:has(.mgx-podtytul) .wp-block-media-text__content>*{margin-top:0!important}
+.entry-content .wp-block-media-text:has(.mgx-podtytul) p.mgx-podtytul{margin:0 0 4px!important}
+@media (max-width:600px){.entry-content .wp-block-media-text:has(.mgx-podtytul){grid-template-columns:96px 1fr!important;grid-template-rows:auto!important}.entry-content .wp-block-media-text:has(.mgx-podtytul) .wp-block-media-text__media{grid-column:1!important;grid-row:1!important}.entry-content .wp-block-media-text:has(.mgx-podtytul) .wp-block-media-text__content{grid-column:2!important;grid-row:1!important}.entry-content .wp-block-media-text:has(.mgx-podtytul) img{aspect-ratio:1;object-fit:cover;height:auto}}
+.entry-content .wp-block-media-text:has(.mgx-podtytul){display:grid!important;grid-template-columns:minmax(0,38%) 1fr}
+.entry-content .wp-block-table table.mgx-2k tr.mgx-n2>td,.entry-content .wp-block-table table.mgx-2k tr.mgx-n2>th{background:#eef2f6!important;font-weight:600!important;color:var(--mg-ink)!important}
+body .entry-content .wp-block-media-text:has(.mgx-podtytul) .wp-block-media-text__content.wp-block-media-text__content{padding:0 4px!important}
+body .entry-content .wp-block-media-text:has(.mgx-podtytul) .wp-block-media-text__content p.mgx-podtytul.mgx-podtytul{margin:0 0 6px!important;padding:0!important}
+body .entry-content .wp-block-media-text:has(.mgx-podtytul) .wp-block-media-text__content p.has-medium-font-size.has-medium-font-size{font-size:.78rem!important;letter-spacing:.06em;text-transform:uppercase;color:var(--mg-mut)!important;margin:0 0 4px!important}
+body .entry-content .wp-block-media-text:has(.mgx-podtytul) .wp-block-media-text__content p.has-medium-font-size strong{font-weight:600;color:var(--mg-mut)}
+body .entry-content .wp-block-media-text:has(.mgx-podtytul) .wp-block-media-text__content li{margin:0!important;font-size:.92rem;line-height:1.45}
+body .entry-content .wp-block-table table.mgx-2k.mgx-2k tr.mgx-n2>td.mgx-n2c,body .entry-content .wp-block-table table.mgx-2k.mgx-2k tr.mgx-n2>td{background-color:#eef2f6!important}
+/* stare galerie (ul.blocks-gallery-grid): siatka zdjec bez punktorow */
+.entry-content ul.blocks-gallery-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;list-style:none!important;margin:0 0 1.2em!important;padding:0!important;width:100%}
+@media (min-width:782px){.entry-content .columns-3 ul.blocks-gallery-grid,.entry-content .columns-4 ul.blocks-gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.entry-content ul.blocks-gallery-grid>li{margin:0!important;padding:0!important;width:auto!important;list-style:none!important}
+.entry-content ul.blocks-gallery-grid>li::before,.entry-content ul.blocks-gallery-grid>li::marker{content:none!important;display:none!important}
+.entry-content ul.blocks-gallery-grid figure{margin:0!important;height:100%}
+.entry-content ul.blocks-gallery-grid img{width:100%!important;height:100%!important;aspect-ratio:4/3;object-fit:cover;border-radius:8px;display:block}
+/* tabele-pary (np. naglowek portu: Kontakt / Glebokosc / Ceny): pelna szerokosc komorek, mala ikona obok etykiety */
+@media (max-width:767px){
+.entry-content .wp-block-table.mgx-pary td{width:auto!important;justify-self:stretch;text-align:left!important}
+.entry-content .wp-block-table.mgx-pary td img{width:34px!important;height:auto!important;display:inline-block!important;vertical-align:middle;margin:0 8px 0 0!important}
+.entry-content .wp-block-table.mgx-pary tr{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)!important}
+}
+body .entry-content figure.wp-block-gallery ul.blocks-gallery-grid{padding:0!important;margin:0 0 1.2em!important}
+body .entry-content .wp-block-table.mgx-pary table tr>td:first-child{max-width:none!important}
+body .entry-content .wp-block-table.mgx-pary table{background:#eef2f6}
+.entry-content :is(#mgx-x,ul.blocks-gallery-grid){padding:0!important;padding-inline-start:0!important;margin-left:0!important}
+.entry-content :is(#mgx-x,ul.blocks-gallery-grid)>li{padding:0!important;margin:0!important}
