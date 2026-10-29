@@ -4,7 +4,7 @@ Author:       iREBU Interactive Agency
 Author URI:   https://irebu.com
 Version:      3.0.0
 Template:     generatepress
-Description:  Odswiezenie Marigo 2026: strona glowna, szablon podstrony jachtu, nowa oprawa wszystkich podstron i wpisow, naglowek, menu na telefonie i stopka. Czcionka Source Sans 3 z plikow motywu (fonts/, licencja SIL OFL), bez Google Fonts.
+Description:  Odswiezenie Marigo 2026 (v9 - uklad pierwszej koncepcji, granat i czerwien z logo): strona glowna, szablon podstrony jachtu, nowa oprawa wszystkich podstron i wpisow, naglowek, menu na telefonie i stopka. Czcionka Source Sans 3 z plikow motywu (fonts/, licencja SIL OFL), bez Google Fonts.
 */
 
 /* ==========================================================================
@@ -1229,3 +1229,331 @@ body.mg-zwykla.page .page-hero .inside-page-hero{max-width:var(--mg-wrap)!import
 }
 .mg-jintro-btn{display:none;background:none;border:0;padding:0;margin:-6px 0 14px;color:var(--mg-blue);font:inherit;font-size:.95rem;font-weight:600;text-decoration:underline;cursor:pointer}
 @media (max-width:781px){.mg-jintro-js+.mg-jintro-btn{display:inline-block}}
+
+/* ==========================================================================
+   v9 (29.10.2026, uwagi klientki): uklad z pierwszej koncepcji, wiecej granatu
+   i mocnej czerwieni z logo (#ff2f27), oryginalne teksty. Klasy nowych sekcji: m9-*
+   ========================================================================== */
+:root{
+  --mg-red:#ff2f27;          /* czerwien z logo Marigo */
+  --mg-red-d:#d91d16;
+  --mg-navy:#0d2741;         /* ciemny granat */
+  --mg-navy-2:#173a5e;
+  --mg-navy-3:#081a2d;
+  --mg-sand:#f3efe7;
+  --m9-gut:max(16px,calc((100% - var(--mg-wrap))/2));
+  --m9-jasny:#d3deea;        /* tekst na granacie */
+}
+/* przyciski: czerwien z logo, pogrubione */
+.entry-content .mg-btn .wp-block-button__link,a.mg-btn{font-weight:700;letter-spacing:.01em;box-shadow:0 6px 16px rgba(255,47,39,.22)}
+.main-navigation .menu-bar-items .menu-bar-item.mg-tel>a{font-weight:700}
+.main-navigation .main-nav ul li[class*="current-menu-"]>a,.main-navigation .main-nav ul li:not([class*="current-menu-"]):hover>a{color:var(--mg-red)}
+.site-header{border-bottom:3px solid var(--mg-navy)}
+.entry-content .m9-btn-linia .wp-block-button__link{background:transparent!important;color:var(--mg-navy)!important;border:2px solid var(--mg-navy);box-shadow:none}
+.entry-content .m9-btn-linia .wp-block-button__link:hover{background:var(--mg-navy)!important;color:#fff!important}
+.m9-etyk{font-size:.8rem!important;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mg-red)!important;margin:0 0 .5em!important}
+
+/* ---------- sekcje (strona glowna i strony jachtow) ---------- */
+.wp-block-group[class*="m9-"]>.wp-block-group__inner-container{display:contents}
+.m9-sek{padding:clamp(48px,7vw,92px) 16px;margin:0!important;background:#fff;border:0}
+.m9-sek.m9-sand,.m9-jsek.m9-sand{background:var(--mg-sand)}
+.m9-in{width:min(var(--mg-wrap),100%);margin:0 auto!important}
+.m9-in>*:last-child{margin-bottom:0}
+:is(.m9-sek,.m9-jsek) h2{font-size:clamp(1.5rem,1.15rem + 1.4vw,2.2rem);line-height:1.18;font-weight:700;color:var(--mg-navy);letter-spacing:-.01em;margin:0 0 .65em;position:relative;padding-top:16px}
+:is(.m9-sek,.m9-jsek) h2:before{content:"";position:absolute;left:0;top:0;width:44px;height:4px;border-radius:2px;background:var(--mg-red)}
+:is(.m9-sek,.m9-jsek) h3{color:var(--mg-navy);font-weight:700}
+:is(.m9-sek,.m9-jsek) p,:is(.m9-sek,.m9-jsek) li{font-size:1rem;line-height:1.62}
+:is(.m9-sek,.m9-jsek) a{color:var(--mg-navy-2)}
+/* granatowe sekcje */
+.m9-granat,.m9-granat-j{background:var(--mg-navy)!important;color:var(--m9-jasny)}
+:is(.m9-granat,.m9-granat-j) :is(h2,h3,h4,strong,b){color:#fff!important}
+:is(.m9-granat,.m9-granat-j) a{color:#fff!important}
+:is(.m9-granat,.m9-granat-j) p,:is(.m9-granat,.m9-granat-j) li{color:var(--m9-jasny)}
+
+/* ---------- STRONA GLOWNA ---------- */
+body.mg-glowna .mg-hero{background:var(--mg-navy)}
+@media (min-width:761px){.mg-hero:before{background:linear-gradient(100deg,rgba(8,26,45,.92) 0%,rgba(13,39,65,.78) 48%,rgba(13,39,65,.25) 100%)!important}}
+.mg-hero h1{font-weight:700!important}
+.mg-sek{border-top:0}
+.mg-szukaj-sek{background:#fff}
+
+/* typy jachtow: kafle ze zdjeciem */
+.m9-typy-siatka{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (min-width:900px){.m9-typy-siatka{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}}
+.m9-typ{position:relative;border-radius:12px;overflow:hidden;background:var(--mg-navy);aspect-ratio:4/3;margin:0!important;isolation:isolate}
+.m9-typ .m9-typ-fot{position:absolute;inset:0;margin:0!important}
+.m9-typ .m9-typ-fot img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.m9-typ:hover .m9-typ-fot img{transform:scale(1.05)}
+.m9-typ:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(8,26,45,.92) 0%,rgba(8,26,45,.35) 45%,rgba(8,26,45,0) 70%);pointer-events:none}
+.m9-typ .m9-typ-n{position:absolute;left:14px;right:14px;bottom:12px;z-index:2;margin:0!important;font-size:clamp(1.02rem,.9rem + .6vw,1.3rem)!important;font-weight:700;line-height:1.2}
+.m9-typ .m9-typ-n a{color:#fff!important;text-decoration:none}
+.m9-typ .m9-typ-n a:after{content:"";position:absolute;inset:-400px -20px -20px;z-index:3}
+.m9-typ .m9-typ-n a:before{content:"";display:inline-block;width:22px;height:3px;background:var(--mg-red);vertical-align:middle;margin-right:10px;border-radius:2px}
+
+/* karty jachtow: filtr */
+.m9-filtr{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 22px}
+.m9-filtr button{font:inherit;font-weight:600;font-size:.95rem;min-height:42px;padding:8px 16px;border-radius:999px;border:2px solid var(--mg-navy);background:#fff;color:var(--mg-navy);cursor:pointer}
+.m9-filtr button[aria-pressed="true"]{background:var(--mg-navy);color:#fff}
+.m9-filtr button:hover{border-color:var(--mg-red)}
+.m9-filtr-n{margin-left:auto;color:var(--mg-mut);font-size:.92rem}
+@media (max-width:600px){.m9-filtr-n{width:100%;margin-left:0}}
+.mg-flota-tyt[hidden],.mg-flota[hidden],article.mg-jacht[hidden]{display:none!important}
+.mg-jacht{border-color:#d9dee5}
+.mg-jacht:hover{box-shadow:0 14px 30px rgba(13,39,65,.16)}
+.mg-jacht .mg-wiecej{color:var(--mg-red)!important;font-weight:700}
+.mg-jacht .mg-dol strong{color:var(--mg-navy)}
+
+/* 8 korzysci (granat) + formularz */
+.m9-korzysci-kol.wp-block-columns{gap:32px 64px;margin:0;align-items:flex-start}
+.m9-korzysci-kol>.wp-block-column:first-child{flex:1 1 60%}
+.m9-korzysci-kol>.wp-block-column:last-child{flex:1 1 40%}
+@media (max-width:900px){.m9-korzysci-kol.wp-block-columns{flex-wrap:wrap!important}.m9-korzysci-kol>.wp-block-column{flex-basis:100%!important}}
+.m9-korzysci-lista{list-style:none;counter-reset:k;margin:0!important;padding:0!important}
+.m9-korzysci-lista li{counter-increment:k;position:relative;padding:14px 0 14px 54px;border-bottom:1px solid rgba(255,255,255,.12);margin:0!important}
+.m9-korzysci-lista li:last-child{border-bottom:0}
+.m9-korzysci-lista li:before{content:counter(k);position:absolute;left:0;top:12px;width:36px;height:36px;border-radius:50%;background:var(--mg-red);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:1rem}
+.m9-korzysci h2{color:#fff!important}
+.m9-formularz{background:#fff;border-radius:14px;padding:clamp(18px,2.4vw,28px);box-shadow:0 20px 50px rgba(0,0,0,.28);color:var(--mg-txt)}
+.m9-formularz :is(h3,strong){color:var(--mg-navy)!important}
+.m9-formularz :is(p,label,li){color:var(--mg-txt)!important}
+.m9-formularz a{color:var(--mg-navy-2)!important}
+.m9-formularz input[type=submit],.m9-formularz button[type=submit]{background:var(--mg-red)!important;color:#fff!important;border:0;border-radius:8px;font-weight:700;min-height:48px;padding:12px 28px}
+.m9-formularz input:not([type=submit]),.m9-formularz textarea{width:100%;background:#f7f8fa;border:1px solid #cfd6de;border-radius:8px}
+
+/* zakladki (taby) */
+.m9-taby{margin:0}
+.m9-tab>*:last-child{margin-bottom:0}
+.m9-tab :is(h2,h3).m9-tab-h{padding-top:0}
+.m9-tab :is(h2,h3).m9-tab-h:before{display:none}
+@media (min-width:901px){
+  .m9-taby.m9-taby-js{display:grid;grid-template-columns:minmax(0,34%) minmax(0,1fr);gap:0 48px;align-items:start}
+  .m9-taby-nav{grid-row:1/span 50;display:flex;flex-direction:column;gap:6px;position:sticky;top:20px}
+  .m9-taby-b{font:inherit;text-align:left;font-weight:600;font-size:1rem;line-height:1.35;color:var(--mg-navy);background:#fff;border:1px solid #d9dee5;border-left:4px solid transparent;border-radius:8px;padding:13px 16px;cursor:pointer;transition:background-color .15s,color .15s}
+  .m9-sand .m9-taby-b{background:#fff}
+  .m9-taby-b:hover{border-left-color:var(--mg-red)}
+  .m9-taby-b[aria-selected="true"]{background:var(--mg-navy);color:#fff;border-color:var(--mg-navy);border-left-color:var(--mg-red)}
+  .m9-taby-js .m9-tab{grid-column:2;display:none}
+  .m9-taby-js .m9-tab.m9-akt{display:block}
+  .m9-taby-js .m9-tab :is(h2,h3).m9-tab-h{font-size:clamp(1.3rem,1.1rem + .7vw,1.7rem);margin:0 0 .6em}
+}
+@media (max-width:900px){
+  .m9-taby-nav{display:none}
+  .m9-taby-js{border-top:1px solid #d9dee5}
+  .m9-taby-js .m9-tab{border-bottom:1px solid #d9dee5;padding:0}
+  .m9-taby-js .m9-tab:not(.m9-otw)>:not(.m9-tab-h):not(.wp-block-group__inner-container),.m9-taby-js .m9-tab:not(.m9-otw)>.wp-block-group__inner-container>:not(.m9-tab-h){display:none!important}
+  .m9-taby-js .m9-tab.m9-otw{padding-bottom:16px}
+  .m9-taby-js .m9-tab-h{font-size:1.04rem!important;line-height:1.4!important;margin:0!important;padding:15px 34px 15px 0!important;cursor:pointer;position:relative}
+  .m9-taby-js .m9-tab-h:after{content:"";position:absolute;right:6px;top:21px;width:9px;height:9px;border-right:2px solid var(--mg-red);border-bottom:2px solid var(--mg-red);transform:rotate(45deg);transition:transform .2s}
+  .m9-taby-js .m9-otw>.m9-tab-h:after{transform:rotate(-135deg);top:25px}
+}
+
+/* rezerwacja i zasady (listy z /cennik/) */
+.m9-rez-kol.wp-block-columns{gap:28px 64px;margin:0}
+@media (max-width:900px){.m9-rez-kol.wp-block-columns{flex-wrap:wrap!important}.m9-rez-kol>.wp-block-column{flex-basis:100%!important}}
+.m9-zasady{display:grid;gap:22px;margin:0 0 22px}
+.m9-zasada ul,.m9-zasada ol{list-style:none;margin:0!important;padding:0!important}
+.m9-zasada li{position:relative;padding:9px 0 9px 22px;border-bottom:1px solid var(--mg-line);margin:0!important;line-height:1.5}
+.m9-zasada li:before{content:"";position:absolute;left:2px;top:18px;width:8px;height:8px;border-radius:50%;background:var(--mg-red)}
+.m9-zasada-procedura ul{counter-reset:p}
+.m9-zasada-procedura li{counter-increment:p;padding:14px 0 14px 50px}
+.m9-zasada-procedura li:before{content:counter(p);width:32px;height:32px;top:12px;left:0;background:var(--mg-navy);color:#fff;font-weight:700;font-size:.95rem;display:flex;align-items:center;justify-content:center}
+.m9-zasada-procedura .m9-etyk{display:none}
+
+/* port Sztynort */
+.m9-port-kol.wp-block-columns{gap:28px 56px;margin:0 0 28px;align-items:flex-start}
+@media (max-width:900px){.m9-port-kol.wp-block-columns{flex-wrap:wrap!important}.m9-port-kol>.wp-block-column{flex-basis:100%!important}}
+.m9-telefony{background:var(--mg-navy);border-radius:12px;padding:16px 20px;margin:0 0 1.1em}
+.m9-telefony p{color:#fff!important;margin:0!important;padding:6px 0;font-weight:600;border-bottom:1px solid rgba(255,255,255,.12)}
+.m9-telefony p:last-child{border-bottom:0}
+.m9-telefony a{color:#fff!important}
+.m9-port-fot{margin:0 0 14px!important;border-radius:12px;overflow:hidden}
+.m9-port-fot img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.m9-port .mgx-mapa,.m9-port iframe{border-radius:12px;overflow:hidden;width:100%}
+.m9-port-lista{list-style:none;margin:0!important;padding:0!important;display:grid;grid-template-columns:minmax(0,1fr);gap:0 36px}
+@media (min-width:760px){.m9-port-lista{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.m9-port-lista li{position:relative;padding:10px 0 10px 30px;border-bottom:1px solid var(--mg-line);margin:0!important}
+.m9-port-lista li:before{content:"";position:absolute;left:0;top:13px;width:18px;height:18px;border-radius:50%;background:var(--mg-red) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/11px no-repeat}
+
+/* FAQ */
+.m9-faq{max-width:none;border-top:2px solid var(--mg-navy)}
+.m9-faq summary{font-size:1.02rem;color:var(--mg-navy)!important}
+.m9-faq summary:after{border-color:var(--mg-red)!important}
+.m9-faq details[open]>summary{color:var(--mg-red)!important}
+.m9-faq-sek h2{max-width:34em}
+
+/* o nas */
+.m9-onas-kol.wp-block-columns{gap:28px 56px;margin:0;align-items:center}
+@media (max-width:900px){.m9-onas-kol.wp-block-columns{flex-wrap:wrap!important}.m9-onas-kol>.wp-block-column{flex-basis:100%!important}}
+.m9-onas-fot{margin:0!important;border-radius:14px;overflow:hidden;box-shadow:0 20px 44px rgba(13,39,65,.2)}
+.m9-onas-fot img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.m9-onas h3{margin-top:1.4em}
+
+/* popularne porty startowe (glowna i strony jachtow) */
+.m9-porty-siatka{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (min-width:900px){.m9-porty-siatka{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}}
+.m9-port-k{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:16/10;background:var(--mg-navy);margin:0!important;isolation:isolate}
+.m9-port-k .m9-port-k-fot{position:absolute;inset:0;margin:0!important}
+.m9-port-k .m9-port-k-fot img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.m9-port-k:hover img{transform:scale(1.05)}
+.m9-port-k:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(8,26,45,.9),rgba(8,26,45,0) 60%);pointer-events:none}
+.m9-port-k .m9-port-k-n{position:absolute;left:14px;bottom:10px;right:14px;z-index:2;margin:0!important;font-weight:700;font-size:1.1rem!important}
+.m9-port-k .m9-port-k-n a{color:#fff!important;text-decoration:none}
+.m9-port-k .m9-port-k-n a:after{content:"";position:absolute;inset:-400px -20px -20px}
+.m9-porty-wiecej{grid-column:1/-1;margin:6px 0 0!important;font-size:.95rem!important;color:var(--mg-mut)}
+
+/* ---------- STRONY JACHTOW ---------- */
+body.m9-strona.mg-jacht-strona #page.grid-container,body.m9-strona.mg-jacht-strona .site.grid-container{max-width:none!important;padding:0!important}
+body.m9-strona.mg-jacht-strona.one-container .site-content{padding:0!important}
+body.m9-strona.mg-jacht-strona .site-content .content-area{max-width:none!important;width:100%}
+body.m9-strona.mg-jacht-strona .inside-article{padding:0!important}
+body.m9-strona.mg-jacht-strona .entry-content{margin:0!important}
+body.m9-strona.mg-jacht-strona .entry-content>*{margin-top:0!important;margin-bottom:0!important}
+/* H1 i opis na granacie, nad zdjeciami */
+body.m9-strona.mg-jacht-strona .page-hero{background:var(--mg-navy)!important;padding:clamp(22px,3.4vw,40px) 16px 10px!important}
+body.m9-strona.mg-jacht-strona .page-hero h1{color:#fff!important;font-weight:700!important;font-size:clamp(1.45rem,1.1rem + 1.8vw,2.5rem)!important;max-width:30em}
+.m9-jintro{background:var(--mg-navy);padding:6px var(--m9-gut) clamp(16px,2.4vw,26px)!important;margin:0!important}
+.m9-jintro :is(h2,p){color:var(--m9-jasny)!important;max-width:62rem!important;font-size:1.02rem!important}
+.m9-jintro :is(h2,p) :is(strong,b){color:#fff}
+.m9-jintro a{color:#fff!important}
+.m9-jintro.mg-jintro-js:not(.mg-jintro-otw):after{background:linear-gradient(rgba(13,39,65,0),var(--mg-navy))!important}
+.mg-jintro-btn{color:#fff!important}
+.m9-jintro+.mg-jintro-btn{display:none}
+@media (max-width:781px){.m9-jintro.mg-jintro-js+.mg-jintro-btn{display:block;background:var(--mg-navy);margin:0;padding:0 16px 14px;width:100%;text-align:left}}
+/* galeria + panel */
+.m9-jhero.wp-block-columns{background:var(--mg-navy);margin:0!important;padding:4px var(--m9-gut) clamp(24px,4vw,44px)!important;gap:18px 40px;align-items:stretch}
+.m9-jhero .mg-jpanel{background:var(--mg-navy-2);border-radius:14px;padding:clamp(16px,2.2vw,26px)!important;color:var(--m9-jasny);align-self:flex-start}
+.m9-jhero .mg-jpanel .mg-pod{color:#9fb4c9!important;font-size:.9rem!important;text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+.m9-jhero .mg-jpanel a{color:#fff}
+.m9-jhero .mg-jcena{color:#fff!important;font-size:1.15rem!important;margin:6px 0 4px!important}
+.m9-jhero .mg-jcena strong{color:#fff;font-size:1.9rem;font-weight:700}
+.m9-jhero .mg-mala{color:#a9bccd!important}
+.m9-jhero .mg-korzysci li{color:var(--m9-jasny)!important}
+.m9-jhero .mg-galeria>figure{border-radius:10px}
+.m9-jhero .mg-btn .wp-block-button__link{min-height:52px;font-size:1.05rem}
+/* listy z ikonkami */
+.m9-ikony{list-style:none!important;padding:0!important;margin:0 0 14px!important}
+.m9-ikony li{position:relative;padding:10px 0 10px 34px!important;line-height:1.4;border-bottom:1px solid var(--mg-line-2)}
+.m9-ikony li:before{content:"";position:absolute;left:0;top:9px;width:22px;height:22px;background:var(--mg-red);-webkit-mask:var(--m9-ik) center/contain no-repeat;mask:var(--m9-ik) center/contain no-repeat}
+.m9-param{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 18px}
+.m9-param li{color:#fff!important;border-color:rgba(255,255,255,.14)!important;font-size:.98rem!important}
+.m9-param li strong{color:#9fb4c9!important;display:inline!important;font-size:inherit!important}
+.m9-param li:before{background:#ff6b64}
+@media (max-width:420px){.m9-param{grid-template-columns:minmax(0,1fr)}}
+
+/* sekcje strony jachtu */
+.m9-jsek{padding:clamp(40px,6vw,80px) var(--m9-gut)!important;border-top:0!important;background:#fff}
+.m9-jsek>.m9-in{width:100%}
+.m9-rez-j{background:#fff}
+.m9-rez-j h2#kalendarz{scroll-margin-top:12px}
+.m9-dwie.wp-block-columns{gap:32px 56px;margin:0;align-items:flex-start}
+@media (max-width:900px){.m9-dwie.wp-block-columns{flex-wrap:wrap!important}.m9-dwie>.wp-block-column{flex-basis:100%!important}}
+.m9-cennik-kol>.wp-block-column:first-child{flex:1 1 56%}
+.m9-cennik-kol>.wp-block-column:last-child{flex:1 1 44%}
+/* cennik: tabela Termin | Doba | Tydzien */
+.m9-cj{background:#fff;border-radius:14px;padding:clamp(14px,2vw,22px);box-shadow:0 10px 30px rgba(13,39,65,.08);border:1px solid #e1e5ea}
+.m9-cj .mg-cj-od{font-size:1.05rem!important;color:var(--mg-navy);margin:0 0 12px!important}
+.m9-cj .mg-cj-od b{color:var(--mg-red);font-size:1.25rem}
+.m9-ctab-w{overflow-x:auto}
+.m9-ctab{width:100%;border-collapse:collapse;font-size:.98rem;margin:0}
+.m9-ctab th{background:var(--mg-navy);color:#fff;font-weight:600;text-align:left;padding:10px 12px;font-size:.88rem;letter-spacing:.02em}
+.m9-ctab th:first-child{border-radius:8px 0 0 0}.m9-ctab th:last-child{border-radius:0 8px 0 0}
+.m9-ctab td{padding:10px 12px;border-bottom:1px solid #e6e9ee;color:var(--mg-txt);white-space:nowrap}
+.m9-ctab td:first-child{border-left:4px solid #9bc3e6;font-variant-numeric:tabular-nums}
+.m9-ctab tr.mg-s2 td:first-child{border-left-color:#f2b33d}
+.m9-ctab tr.mg-s3 td:first-child{border-left-color:var(--mg-red)}
+.m9-ctab tr.mg-s0 td:first-child{border-left-color:#c8ced6}
+.m9-ctab td b{color:var(--mg-navy);font-weight:700}
+.m9-ctab tbody tr:nth-child(even) td{background:#f8f9fb}
+.m9-ctab th:nth-child(n+2),.m9-ctab td:nth-child(n+2){text-align:right}
+@media (max-width:420px){.m9-ctab{font-size:.92rem}.m9-ctab td,.m9-ctab th{padding:9px 8px}}
+.m9-cj .mg-cj-dod{font-size:.9rem!important;color:var(--mg-mut);margin:12px 0 0!important}
+.m9-cj .mg-cj-linki{display:flex;flex-wrap:wrap;gap:8px 18px;margin:12px 0 0!important}
+.m9-cj .mg-cj-linki a{font-weight:600;color:var(--mg-navy-2)}
+.m9-cennik .m9-zasady{gap:18px}
+.m9-cennik p:not(.m9-etyk):not(.mg-cj-od):not(.mg-cj-dod):not(.mg-cj-linki){background:#fff;border-left:4px solid var(--mg-red);border-radius:0 10px 10px 0;padding:14px 16px}
+/* dane techniczne (ikonki) i wyposazenie */
+.m9-spec h2:not(:first-child){margin-top:1.6em}
+.m9-spec-siatka{display:grid;gap:0}
+.m9-spec-siatka .m9-dane{display:grid!important;grid-template-columns:minmax(0,1fr);gap:0 28px;margin:0!important}
+@media (min-width:640px){.m9-spec-siatka .m9-dane{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1000px){.m9-spec-siatka .m9-dane{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.m9-spec-siatka .m9-dane li{border-bottom:1px solid #e3e7ec;font-weight:600;color:var(--mg-navy)}
+.m9-spec-dod{margin:14px 0 0}
+.m9-spec-dod p{font-weight:600;color:var(--mg-navy)}
+.m9-link-etyk a,.m9-spec-dod .wp-block-button__link{display:inline-flex;align-items:center;min-height:44px;padding:8px 18px;border-radius:8px;border:2px solid var(--mg-navy);color:var(--mg-navy)!important;background:#fff!important;font-weight:700;text-decoration:none;font-size:.92rem}
+.m9-schemat{margin:18px 0 0;display:grid;gap:14px}
+.m9-schemat img{max-height:420px;width:auto;margin:0 auto;display:block}
+.m9-wyp{display:grid;grid-template-columns:minmax(0,1fr);gap:0 36px;background:var(--mg-sand);border-radius:14px;padding:clamp(16px,2.4vw,28px)}
+@media (min-width:760px){.m9-wyp{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.m9-wyp .m9-wyp-lista{list-style:none!important;margin:0!important;padding:0!important}
+.m9-wyp .m9-wyp-lista li{position:relative;padding:7px 0 7px 22px;border-bottom:1px solid #e2dccf;line-height:1.45;margin:0!important}
+.m9-wyp .m9-wyp-lista li:before{content:"";position:absolute;left:2px;top:15px;width:8px;height:8px;border-radius:2px;background:var(--mg-red);transform:rotate(45deg)}
+.m9-wyp .wp-block-buttons{grid-column:1/-1;margin:16px 0 0}
+.m9-wyp .wp-block-button__link{background:var(--mg-navy)!important;color:#fff!important;border-radius:8px;font-weight:700}
+/* warunki czarteru (granat) + film */
+.m9-warunki .m9-warunki-lista li{color:#fff!important;border-color:rgba(255,255,255,.14)!important}
+.m9-warunki .m9-warunki-lista li:before{background:#ff6b64}
+.m9-warunki .m9-warunki-lista li strong{color:#9fb4c9!important;font-weight:600}
+.m9-warunki .mg-korzysci{list-style:none;margin:14px 0 0!important;padding:0!important}
+.m9-warunki .mg-korzysci li{position:relative;padding:8px 0 8px 30px;color:#fff!important}
+.m9-warunki .mg-korzysci li:before{content:"";position:absolute;left:0;top:11px;width:18px;height:18px;border-radius:50%;background:var(--mg-red) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/11px no-repeat}
+.m9-warunki p{color:var(--m9-jasny)}
+.m9-warunki .mg-etykieta{color:#fff!important;font-weight:700;letter-spacing:.05em}
+.m9-warunki .wp-block-embed,.m9-warunki .mgx-yt{border-radius:12px;overflow:hidden;margin:0!important}
+/* opis i pytania */
+.m9-opis-wstep{margin:0 0 28px;max-width:62rem}
+.m9-opis .wp-block-table{max-width:100%}
+.m9-tab img{border-radius:10px}
+/* poradniki */
+.m9-por{display:grid;grid-template-columns:minmax(0,1fr);gap:8px 40px}
+@media (min-width:760px){.m9-por{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.m9-por-kolumny .m9-por{grid-template-columns:minmax(0,1fr)}
+.m9-por-lista,.m9-por-oryg ul{list-style:none!important;margin:0 0 14px!important;padding:0!important}
+.m9-por-lista li,.m9-por-oryg li{border-bottom:1px solid var(--mg-line);margin:0!important;padding:0!important}
+.m9-por-lista a,.m9-por-oryg li a{display:block;position:relative;padding:12px 28px 12px 0;color:var(--mg-navy)!important;text-decoration:none;font-weight:600;line-height:1.4}
+.m9-por-lista a:after,.m9-por-oryg li a:after{content:"";position:absolute;right:6px;top:50%;width:8px;height:8px;border-right:2px solid var(--mg-red);border-top:2px solid var(--mg-red);transform:translateY(-50%) rotate(45deg)}
+.m9-por-lista a:hover,.m9-por-oryg li a:hover{color:var(--mg-red)!important}
+.m9-por-oryg h3{font-size:1.1rem!important}
+/* karuzela podobnych jachtow */
+.m9-karuzela{position:relative}
+.m9-tor.mg-flota{display:grid!important;grid-auto-flow:column;grid-auto-columns:minmax(260px,82%);grid-template-columns:none!important;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 14px;margin:0!important;scrollbar-width:thin;overscroll-behavior-x:contain}
+@media (min-width:700px){.m9-tor.mg-flota{grid-auto-columns:calc((100% - 32px)/3)}}
+.m9-tor .mg-jacht{scroll-snap-align:start}
+.m9-kar-nav{display:flex;justify-content:flex-end;gap:8px;margin-top:10px}
+.m9-kar-b{width:46px;height:46px;border-radius:50%;border:2px solid var(--mg-navy);background:#fff;color:var(--mg-navy);font-size:1.6rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0 0 3px}
+.m9-kar-b:hover{background:var(--mg-navy);color:#fff}
+.m9-kar-pocz .m9-kar-w,.m9-kar-kon .m9-kar-d{opacity:.35;pointer-events:none}
+.m9-kar-bez .m9-kar-nav{display:none}
+.m9-podobne .wp-block-gallery{margin-bottom:22px}
+/* Antila 33 (stary uklad 4 jednostek) w oprawie v9 */
+.m9-jsek .mg-a33-karty{margin:0}
+@media (max-width:600px){.m9-typ{aspect-ratio:5/4}.m9-typ .m9-typ-n{font-size:1rem!important;left:10px;right:10px}.m9-typ .m9-typ-n a:before{display:block;margin:0 0 6px}}
+.m9-jhero .mg-korzysci li,.m9-jhero .mg-korzysci li *{color:#fff!important}
+.m9-jhero .mg-korzysci li{border-color:rgba(255,255,255,.14)!important}
+.m9-opis-wstep img{max-height:440px;width:auto;border-radius:12px}
+.page-hero:before{background:linear-gradient(100deg,rgba(8,26,45,.95) 0%,rgba(13,39,65,.86) 55%,rgba(13,39,65,.66) 100%)!important}
+.m9-warunki p.mg-etykieta,.m9-warunki p.mg-etykieta *{color:#fff!important;opacity:1}
+
+/* ikonki punktow list "m9-ikony" (klasa m9-i-... dodawana w functions.php, 18 c) */
+.m9-i-osoby{--m9-ik:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='9' cy='7' r='4'/%3E%3Cpath d='M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8'/%3E%3C/svg%3E")}
+.m9-i-kabiny{--m9-ik:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M13 4h3a2 2 0 0 1 2 2v14M2 20h3M13 20h9M10 12v.01M13 4.6v16.2a1 1 0 0 1-1.2 1L5 20V5.6a2 2 0 0 1 1.5-1.9l4-1A2 2 0 0 1 13 4.6z'/%3E%3C/svg%3E")}
+.m9-i-koje{--m9-ik:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 4v16M2 8h18a2 2 0 0 1 2 2v10M2 17h20M6 8v9'/%3E%3C/svg%3E")}
+.m9-i-lazienka{--m9-ik:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 6 6.5 3.5a1.5 1.5 0 0 0-1-.5C4.7 3 4 3.7 4 4.5V17a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5M10 5 8 7M2 12h20M7 19v2M17 19v2'/%3E%3C/svg%3E")}
+.m9-i-ster{--m9-ik:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='5' r='3'/%3E%3Cpath d='M12 22V8M5 12H2a10 10 0 0 0 20 0h-3'/%3E%3C/svg%3E")}
+.m9-i-dlugosc{--m9-ik:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.4 2.4 0 0 1 0-3.4l2.6-2.6a2.4 2.4 0 0 1 3.4 0zM14.5 12.5l2-2M11.5 9.5l2-2M8.5 6.5l2-2M17.5 15.5l2-2'/%3E%3C/svg%3E")}
+.m9-i-zanurzenie{--m9-ik:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v11M7 9l5 5 5-5M2 20c2-1.5 4-1.5 6 0s4 1.5 6 0 4-1.5 6 0'/%3E%3C/svg%3E")}
+.m9-i-wysokosc{--m9-ik:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v18M8 7l4-4 4 4M8 17l4 4 4-4'/%3E%3C/svg%3E")}
+.m9-i-silnik{--m9-ik:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3Cpath d='M12 2v3M12 19v3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1 7 17M17 7l2.1-2.1'/%3E%3C/svg%3E")}
+.m9-i-paliwo{--m9-ik:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 22h12M4 9h10M14 22V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v18M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 4 0V9.8a2 2 0 0 0-.6-1.4L18 5'/%3E%3C/svg%3E")}
+.m9-i-woda{--m9-ik:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5S5 13 5 15a7 7 0 0 0 7 7z'/%3E%3C/svg%3E")}
+.m9-i-fekalia{--m9-ik:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2'/%3E%3C/svg%3E")}
+.m9-i-masa{--m9-ik:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='5' r='3'/%3E%3Cpath d='M6.5 8a2 2 0 0 0-1.9 1.5L2 20a1.6 1.6 0 0 0 1.6 2h16.8A1.6 1.6 0 0 0 22 20L19.4 9.5A2 2 0 0 0 17.5 8z'/%3E%3C/svg%3E")}
+.m9-i-zagiel{--m9-ik:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2v18M12 3 4 18h8M12 6l7 12h-7M3 21h18'/%3E%3C/svg%3E")}
+.m9-i-rocznik{--m9-ik:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2'/%3E%3Cpath d='M16 2v4M8 2v4M3 10h18'/%3E%3C/svg%3E")}
+.m9-i-uprawnienia{--m9-ik:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='5' width='20' height='14' rx='2'/%3E%3Cpath d='M6 15h4M14 10h4M14 14h4'/%3E%3Ccircle cx='8' cy='10' r='2'/%3E%3C/svg%3E")}
+.m9-i-wydanie{--m9-ik:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 6v6l4 2'/%3E%3C/svg%3E")}
+.m9-i-zdanie{--m9-ik:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 6v6l-4 2'/%3E%3C/svg%3E")}
+.m9-i-kaucja{--m9-ik:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.7 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.5 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z'/%3E%3C/svg%3E")}
+.m9-i-sprzatanie{--m9-ik:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9.9 15.5A2 2 0 0 0 8.5 14l-6.1-1.6a.5.5 0 0 1 0-1L8.5 9.9A2 2 0 0 0 9.9 8.5l1.6-6.1a.5.5 0 0 1 1 0l1.6 6.1a2 2 0 0 0 1.4 1.4l6.1 1.6a.5.5 0 0 1 0 1l-6.1 1.6a2 2 0 0 0-1.4 1.4l-1.6 6.1a.5.5 0 0 1-1 0z'/%3E%3C/svg%3E")}
+.m9-i-port{--m9-ik:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z'/%3E%3Ccircle cx='12' cy='10' r='3'/%3E%3C/svg%3E")}
+.m9-i-punkt{--m9-ik:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")}
